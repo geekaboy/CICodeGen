@@ -27,6 +27,9 @@
     <script src="<?php echo base_url(); ?>assets/plugins/JQuery/jquery-ui/jquery-ui.min.js"></script>
     <link href="<?php echo base_url(); ?>assets/plugins/JQuery/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
+    <!--codemirror-->
+    <link href="<?php echo base_url(); ?>assets/plugins/codemirror/lib/codemirror.css" rel="stylesheet">
+
     <style>
      body{
         font-family: 'Sarabun', serif;
