@@ -21,17 +21,27 @@ $sess = $this->session->userdata();
                 </li>
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#">
-                        <i class="fa fa-database"></i> Menu list
+                        <i class="fa fa-database"></i> CRUD
                     </a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
                             <a class="nav-link sub-menu" href="<?php echo site_url(); ?>">
-                                <i class="fa fa-dot-circle-o nav-icon"></i> list
+                                <i class="fa fa-dot-circle-o nav-icon"></i> Create
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link sub-menu" href="<?php echo site_url(); ?>">
-                                <i class="fa fa-dot-circle-o nav-icon"></i> list
+                                <i class="fa fa-dot-circle-o nav-icon"></i> Read
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sub-menu" href="<?php echo site_url(); ?>">
+                                <i class="fa fa-dot-circle-o nav-icon"></i> Update
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sub-menu" href="<?php echo site_url(); ?>">
+                                <i class="fa fa-dot-circle-o nav-icon"></i> Delete
                             </a>
                         </li>
                     </ul>
