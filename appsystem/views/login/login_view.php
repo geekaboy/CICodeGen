@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <meta name="keyword" content="">
     <meta name="site_url" content="<?php echo site_url(); ?>">
-    <title>CSE Customer Satisfaction Evaluation : Login</title>
+    <title>CI:Code Generator: Login</title>
     <!-- Icons-->
     <link href="<?php echo base_url(); ?>assets/theme/vendors/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/theme/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
@@ -26,8 +26,7 @@
               <div class="card-body">
                 <div class="text-center">
                   <img src="<?php echo base_url('assets/images/sys_logo.png') ?>"
-                    class="img mb-3" width="250">
-                  <p class="text-muted">Sign In to your account</p>
+                    class="img mb-3" width="330">
                 </div>
 
                 <div class="row justify-content-center">

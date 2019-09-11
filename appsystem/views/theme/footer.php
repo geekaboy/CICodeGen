@@ -17,7 +17,7 @@
         </div><!-- end app body -->
         <footer class="app-footer">
             <div class="ml-auto">
-                <span>Modify with ♥️ CRRU Dev. Team</span>
+                <span>Modify with ♥️ SS2SEK</span>
             </div>
         </footer>
 

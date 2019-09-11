@@ -8,7 +8,7 @@
       </button>
       <a class="navbar-brand" href="#">
           <!-- <img class="navbar-brand-full" src="<?php echo base_url(); ?>assets/images/lotto.png" width="85"> -->
-          <h3 style="color:#FE6B32;font-weight:bold;">CRRU CSE</h3>
+          <h3 style="color:#FE6B32;font-weight:bold;">CI:CODE</h3>
       </a>
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
           <span class="navbar-toggler-icon"></span>

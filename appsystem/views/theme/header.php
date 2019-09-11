@@ -10,7 +10,7 @@
     <meta name="site_url" content="<?php echo site_url(); ?>">
     <meta name="base_url" content="<?php echo base_url(); ?>">
 
-    <title>CSE: Customer Satisfaction Evaluation</title>
+    <title>CI:Code Generator</title>
     <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
     <!-- Icons-->
     <link href="<?php echo base_url('assets/theme/vendors/@coreui/icons/css/coreui-icons.min.css'); ?>" rel="stylesheet">
