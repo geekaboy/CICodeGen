@@ -1,0 +1,19 @@
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+
+
+#codeigniter 3
+.htaccess
+.vscode
+.DS_Store
+appsystem/logs/*
+appsystem/config/*
+vendor
+
+files/*.jpg
+files/*.png
+!appsystem/logs/index.html
+!appsystem/logs/.htaccess
