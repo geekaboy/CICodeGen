@@ -38,11 +38,11 @@ class Login extends CI_Controller
 
     public function check_login()
     {
-        $data_post = $this->input->post();
+        $data_post = $this->input->post(NULL, TRUE);
 
         if (isset($data_post['username']) && isset($data_post['password'])) {
 
-            if ($data_post['username'] = 'admin' && $data_post['password']='1234') {
+            if ($data_post['username'] == 'admin' && $data_post['password']=='1234') {
                 $sdata = array(
                     'is_login' => TRUE,
                     'id' => 'admin',

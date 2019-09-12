@@ -12,6 +12,7 @@
 
     <title>CI:Code Generator</title>
     <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
     <!-- Icons-->
     <link href="<?php echo base_url('assets/theme/vendors/@coreui/icons/css/coreui-icons.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/theme/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
@@ -27,8 +28,7 @@
     <script src="<?php echo base_url(); ?>assets/plugins/JQuery/jquery-ui/jquery-ui.min.js"></script>
     <link href="<?php echo base_url(); ?>assets/plugins/JQuery/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
-    <!--codemirror-->
-    <link href="<?php echo base_url(); ?>assets/plugins/codemirror/lib/codemirror.css" rel="stylesheet">
+
 
     <style>
      body{
@@ -36,6 +36,16 @@
      }
      .sub-menu{
          font-size: 14px;
+     }
+     @font-face {
+       font-family: 'Fira Code';
+       src: url('<?php echo base_url('assets/fonts/FiraCode-Regular.woff'); ?>') format('woff2'),
+         url("woff/FiraCode-Light.woff") format("woff");
+       font-weight: 300;
+       font-style: normal;
+     }
+     code{
+         font-family: 'Fira Code', 'Sarabun', serif !important;
      }
     </style>
 </head>

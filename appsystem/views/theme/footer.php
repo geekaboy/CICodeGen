@@ -31,14 +31,6 @@
 
     <script src="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert_all.js"></script>
 
-    <script src="<?php echo base_url(); ?>assets/plugins/codemirror/lib/codemirror.js"></script>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/codemirror/addon/hint/show-hint.css">
-    <script src="<?php echo base_url(); ?>assets/plugins/codemirror/addon/hint/show-hint.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/codemirror/addon/hint/xml-hint.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/codemirror/mode/xml/xml.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/codemirror/mode/javascript/javascript.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/codemirror/mode/css/css.js"></script>
-    <script src="<?php echo base_url(); ?>assets/plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 
     <script src="<?php echo base_url(); ?>appjs/global_variable.js"></script>
 
@@ -55,14 +47,6 @@
             echo get_plugin($appjs);
         }
         ?>
-    <script type="text/javascript">
-        editor = CodeMirror(document.getElementById("code"), {
-            lineNumbers:true,
-            mode: "text/html",
-            extraKeys: {"Ctrl-Space": "autocomplete"},
-            value: document.getElementById('code_view').innerHTML,
-        });
-    </script>
     </body>
 
 </html>
