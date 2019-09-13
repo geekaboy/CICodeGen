@@ -48,7 +48,7 @@ foreach ($input_list as $key => $input) {
             foreach ($input['option']  as $key => $option) {
             $checkbox.='
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="'.$input['column_name'].'" id="'.$option['id'].'" value="'.$option['value'].'">
+              <input class="form-check-input" type="checkbox" name="'.$input['column_name'].'[]" id="'.$option['id'].'" value="'.$option['value'].'">
               <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
             </div>';
             }
@@ -116,6 +116,7 @@ $html = '<form name="'.$form_name.'">
         <ol>
             <li>Bootstrap v.4</li>
             <li>JQuery</li>
+            <li>SerializeJSON</li>
             <li>PNotify</li>
             <li>SweetAlert2</li>
         </ol>
