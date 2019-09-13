@@ -17,7 +17,6 @@
                         <thead>
                             <tr class="bg-info">
                                 <th>Title</th>
-                                <th>Name attr</th>
                                 <th>ID attr</th>
                                 <th style="max-width: 200px !important;">Value attr</th>
                             </tr>
@@ -25,7 +24,6 @@
                         <tbody id="tb_option">
                             <tr>
                                 <td><input class="form-control" type="text" name="title" id="title"/></td>
-                                <td><input class="form-control" type="text" name="name" id="name"/></td>
                                 <td><input class="form-control" type="text" name="id" id="id"/></td>
                                 <td><input class="form-control" type="text" name="value" id="value"/></td>
                             </tr>

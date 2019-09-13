@@ -7,7 +7,7 @@
                             <br>
                             <br>
                             <i class="fa fa-spinner fa-pulse fa-3x fa-fw text-light"></i><br>
-                            <strong class="text-light">โปรดรอ...</strong>
+                            <strong class="text-light">In process...</strong>
                         </div>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
         </div><!-- end app body -->
         <footer class="app-footer">
             <div class="ml-auto">
-                <span>Modify with ♥️ SS2SEK</span>
+                <span>Develop with ♥️ by @S2SEK</span>
             </div>
         </footer>
 

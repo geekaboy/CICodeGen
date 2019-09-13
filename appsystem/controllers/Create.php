@@ -1,5 +1,5 @@
 <?php
-//------------[Controller File name : Web_link.php ]----------------------//
+//------------[Controller File name : Create.php ]----------------------//
 if (!defined('BASEPATH'))  exit('No direct script access allowed');
 
 class Create extends CI_Controller {
@@ -44,11 +44,14 @@ class Create extends CI_Controller {
         $this->load->view('create/build_form_view', $data);
     }
 
-    public function generate_view()
+    public function generate()
     {
         $post = $this->input->post(NULL, TRUE);
-        // print_r($post);
+        $data['form_name'] = $post['form_name'];
+        $data['developer_name'] = $post['developer_name'];
         $data['input_list'] = $post['input_list'];
+        $data['db_table'] = $post['db_table'];
         $this->load->view('create/code_view', $data);
     }
+
 }//END CLASS

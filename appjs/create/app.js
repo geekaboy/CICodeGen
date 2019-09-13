@@ -32,37 +32,9 @@ function get_build_form_view(){
 
 }
 
-function generate() {
-    show_preload();
-    $('#div_code_view').html('');
-    var form = $('input[name="input_form[]"]:checked');
-    console.log(form);
-    var input_list = [];
-    $.each(form, function(index, el) {
-        var column_name = $(el).data('column-name');
-        var arr = {
-            'column_name':column_name,
-            'column_default':$(el).data('column-default'),
-            'data_type':$(el).data('data-type'),
-            'input_type':$('#'+column_name+'_type').val()
-        };
-        input_list.push(arr);
-    });
-    var param = {
-        input_list:input_list
-    };
-    var url = site_url+'create/generate_view';
-    $('#div_code_view').load(url, param, function(data){
-
-        $('html, body').animate({
-            scrollTop: $('#div_code_view').offset().top - 60
-        }, 500, 'linear');
-        hide_preload();
-    });
-}
-
 function input_type_change(){
-    if($(this).val() == 'checkbox' || $(this).val() == 'radio'){
+    if($(this).val() == 'checkbox' || $(this).val() == 'radio'|| $(this).val() == 'select'){
+        $(this).next('button').remove();
         var btn_addmore = '<button class="btn btn-primary btn-sm pull-right" '+
         'onclick="optionModal(\''+$(this).val()+'\',\''+$(this).data('column-name')+'\')">'+
         '<i class="fa fa-plus-circle"></i> option'+
@@ -74,8 +46,9 @@ function input_type_change(){
     }
 
 }
+
 function optionModal(input_type, column_name) {
-    if(input_type == 'checkbox' || input_type == 'radio'){
+    if(input_type == 'checkbox' || input_type == 'radio' || input_type == 'select'){
         $('#column_name').val(column_name);
         var option_val = $('#option_'+column_name+'_val').text();
         var html = '';
@@ -84,7 +57,6 @@ function optionModal(input_type, column_name) {
             $.each(option_val, function(index, obj) {
                  html+='<tr>'+
                      '<td><input class="form-control" type="text" name="title" id="title" value="'+obj.title+'"/></td>'+
-                     '<td><input class="form-control" type="text" name="name" id="name" value="'+obj.name+'"/></td>'+
                      '<td><input class="form-control" type="text" name="id" id="id" value="'+obj.id+'"/></td>'+
                      '<td><input class="form-control" type="text" name="value" id="value" value="'+obj.value+'"/></td>'+
                  '</tr>';
@@ -92,7 +64,6 @@ function optionModal(input_type, column_name) {
         }
         html += '<tr>'+
             '<td><input class="form-control" type="text" name="title" id="title"/></td>'+
-            '<td><input class="form-control" type="text" name="name" id="name"/></td>'+
             '<td><input class="form-control" type="text" name="id" id="id"/></td>'+
             '<td><input class="form-control" type="text" name="value" id="value"/></td>'+
         '</tr>';
@@ -106,7 +77,6 @@ function optionModal(input_type, column_name) {
 function addNewOption(){
     var html = '<tr>'+
         '<td><input class="form-control" type="text" name="title" id="title"/></td>'+
-        '<td><input class="form-control" type="text" name="name" id="name"/></td>'+
         '<td><input class="form-control" type="text" name="id" id="id"/></td>'+
         '<td><input class="form-control" type="text" name="value" id="value"/></td>'+
     '</tr>';
@@ -116,16 +86,15 @@ function addNewOption(){
 function addOption(){
     var option_el = $('#tb_option>tr');
     var option_list = [];
-    var show_table_option = '<b>Input option</b><table class="table table-bordered table-sm"><thead><tr><th>Title</th><th>Name</th><th>ID</th><th>Value</th></tr></thead>';
+    var show_table_option = '<b><small>Input option</small></b><table class="table table-bordered table-sm"><thead><tr><th>Title</th><th>ID</th><th>Value</th></tr></thead>';
     $.each(option_el, function(index, el) {
         if($(el).find('#title').val() != '' && $(el).find('#name').val() != '' && $(el).find('#id').val() != '' && $(el).find('#value').val() != ''){
             var arr = {
                 title:$(el).find('#title').val(),
-                name:$(el).find('#name').val(),
                 id : $(el).find('#id').val(),
                 value : $(el).find('#value').val()
             };
-            show_table_option+= '<tr><td>'+arr.title+'</td><td>'+arr.name+'</td><td>'+arr.id+'</td><td>'+arr.value+'</td></tr>';
+            show_table_option+= '<tr><td>'+arr.title+'</td><td>'+arr.id+'</td><td>'+arr.value+'</td></tr>';
 
             option_list.push(arr);
         }
@@ -141,4 +110,42 @@ function addOption(){
 
     // Prism.highlightAll();
 
+}
+
+function generate() {
+    show_preload();
+    $('#div_code_view').html('');
+    var form = $('input[name="input_form[]"]:checked');
+    var input_list = [];
+    $.each(form, function(index, el) {
+        var column_name = $(el).data('column-name');
+        var option = $('#option_'+column_name+'_val').text();
+        if(option != ''){
+            option = JSON.parse($('#option_'+column_name+'_val').text());
+        }
+        var arr = {
+            'column_name':column_name,
+            'label':$('#input_label_'+column_name).val(),
+            'column_default':$(el).data('column-default'),
+            'data_type':$(el).data('data-type'),
+            'input_type':$('#'+column_name+'_type').val(),
+            'option':option
+        };
+        input_list.push(arr);
+    });
+
+    var param = {
+        db_table: $('#db_table').val(),
+        form_name:$('#form_name').val(),
+        developer_name:$('#developer_name').val(),
+        input_list:input_list
+    };
+    var url = site_url+'create/generate';
+    $('#div_code_view').load(url, param, function(data){
+
+        $('html, body').animate({
+            scrollTop: $('#div_code_view').offset().top - 60
+        }, 500, 'linear');
+        hide_preload();
+    });
 }
