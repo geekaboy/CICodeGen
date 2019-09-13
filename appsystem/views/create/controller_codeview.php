@@ -19,7 +19,8 @@ class '.$classname.' extends CI_Controller {
 ?>
 <h5>
     Step 1 Create file <span class="text-info"><?php echo $classname; ?>.php</span>
-    in folder application/controllers and copy below code to <span class="text-info"><?php echo $classname; ?>.php</span>
+    in folder application/controllers and copy below code to <span class="text-info"><?php echo $classname; ?>.php</span><br>
+    <small class="text-warning">&nbsp;&nbsp;&nbsp;&nbsp;Note: If you have <?php echo $classname; ?>.php skip this step.</small>
 </h5>
 <pre class="line-numbers language-php"><code><?php echo $controller_code; ?></code></pre>
 

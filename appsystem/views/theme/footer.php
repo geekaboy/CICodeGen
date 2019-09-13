@@ -17,7 +17,7 @@
         </div><!-- end app body -->
         <footer class="app-footer">
             <div class="ml-auto">
-                <span>Develop with ♥️ by @S2SEK</span>
+                <span>Develop with ♥️ by @SS2SEK</span>
             </div>
         </footer>
 

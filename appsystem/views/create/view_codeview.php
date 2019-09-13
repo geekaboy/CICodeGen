@@ -109,10 +109,23 @@ $html = '<form name="'.$form_name.'">
     </div>
 </form>';
 ?>
+
+<div class="row">
+    <div class="col-md-4">
+        <strong><i class="fa fa-cubes" aria-hidden="true"></i> Plugins list</strong>
+        <ol>
+            <li>Bootstrap v.4</li>
+            <li>JQuery</li>
+            <li>PNotify</li>
+            <li>SweetAlert2</li>
+        </ol>
+    </div>
+</div>
 <h5>
     Step 1 Create file <span class="text-info">add_view.php</span>
     in folder views/<?php echo $folder_name;?> and copy below code to <span class="text-info">add_view.php</span>
 </h5>
+
 <pre class="line-numbers language-html" ><code><?php echo htmlspecialchars($html); ?></code></pre>
 <hr>
 <div class="col-md-12 mt-3">

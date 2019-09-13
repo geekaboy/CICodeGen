@@ -3,6 +3,11 @@
         padding: 5px !important;
         vertical-align:middle !important;
     }
+    ol{
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+    }
 </style>
 <main class="main">
     <!-- Breadcrumb-->
