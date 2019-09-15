@@ -30,17 +30,17 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane active show" id="View" role="tabpanel">
-            <div id="div_view_codeview"><?php $this->load->view('create/view_codeview'); ?></div>
+            <div id="div_view_codeview"><?php $this->load->view('read/view_codeview'); ?></div>
         </div>
         <div class="tab-pane" id="controler" role="tabpanel">
-            <div id="div_controller_codeview"><?php $this->load->view('create/controller_codeview'); ?></div>
+            <div id="div_controller_codeview"><?php $this->load->view('read/controller_codeview'); ?></div>
 
         </div>
         <div class="tab-pane" id="model" role="tabpanel">
-            <div id="div_controller_codeview"><?php $this->load->view('create/model_codeview'); ?></div>
+            <div id="div_controller_codeview"></div>
         </div>
         <div class="tab-pane" id="appjs" role="tabpanel">
-            <div id="div_appjs_codeview"><?php $this->load->view('create/appjs_codeview'); ?></div>
+            <div id="div_appjs_codeview"></div>
         </div>
     </div>
 
