@@ -13,6 +13,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#helper" role="tab" aria-controls="profile" aria-selected="false">
+                <i class="fa fa-question-circle" aria-hidden="true"></i> Helper
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#controler" role="tab" aria-controls="profile" aria-selected="false">
                 <i class="fa fa-cog" aria-hidden="true"></i> Controller
             </a>
@@ -23,7 +28,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#appjs" role="tab" aria-controls="messages" aria-selected="false">
+            <a class="nav-link" data-toggle="tab" href="#javascript" role="tab" aria-controls="messages" aria-selected="false">
                 <i class="fa fa-code" aria-hidden="true"></i> Javascipt
             </a>
         </li>
@@ -32,15 +37,19 @@
         <div class="tab-pane active show" id="View" role="tabpanel">
             <div id="div_view_codeview"><?php $this->load->view('read/view_codeview'); ?></div>
         </div>
+        <div class="tab-pane" id="helper" role="tabpanel">
+            <div id="div_helper_codeview"><?php $this->load->view('helper/pagination_codeview'); ?></div>
+
+        </div>
         <div class="tab-pane" id="controler" role="tabpanel">
             <div id="div_controller_codeview"><?php $this->load->view('read/controller_codeview'); ?></div>
 
         </div>
         <div class="tab-pane" id="model" role="tabpanel">
-            <div id="div_controller_codeview"></div>
+            <div id="div_model_codeview"><?php $this->load->view('read/model_codeview'); ?></div>
         </div>
-        <div class="tab-pane" id="appjs" role="tabpanel">
-            <div id="div_appjs_codeview"></div>
+        <div class="tab-pane" id="javascript" role="tabpanel">
+            <div id="div_javascript_codeview"><?php $this->load->view('read/javascript_codeview'); ?></div>
         </div>
     </div>
 

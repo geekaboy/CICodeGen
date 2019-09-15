@@ -90,8 +90,23 @@ $table_view_code = '<div class="row justify-content-center mt-5">
 </table>
 <div class="row justify-content-center mt-5">
     <?php echo $this->pagination->create_links(); ?>
+</div>
 
-</div>';
+<script>
+    $(document).ready(function() {
+        $(\'.page-link > a\').click(function(e) {
+            e.preventDefault();
+            var url = site_url + "'.$table_name.'/get_list?" +
+                \'page=\' + $(this).data(\'ci-pagination-page\') +
+                \'&search_text=\' + $(\'#search_text\').val() +
+            $(\'#div_table\').load(url, function(response, status, request) {
+                $(\'body\').scrollTop(0);
+            });
+
+        });
+    }); //end ready
+</script>
+';
 
 ?>
 <h5>

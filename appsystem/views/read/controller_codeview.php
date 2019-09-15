@@ -24,13 +24,30 @@ class '.$classname.' extends CI_Controller {
 <pre class="line-numbers language-php"><code><?php echo $controller_code; ?></code></pre>
 
 <?php
+$select_column = '';
+$num_column = count($input_list);
+$i_row = 0;
+foreach ($input_list as $key => $input) {
+    $i_row++;
+    if($num_column != $i_row){
+        $select_column .= $input['column_name'].', ';
+    }else {
+        $select_column .= $input['column_name'];
+    }
+
+}
+$where_code = '';
+if($cond != ''){
+    $where_code = '
+        WHERE '.$cond;
+}
 
 $controller_code = 'public function list_view()
 {
     $this->load->view(\''.$controller_name.'/list_view\');
 }
 
-public function table_list()
+public function get_list()
 {
     $get = $this->input->get(NULL, TRUE);
 
@@ -38,16 +55,15 @@ public function table_list()
     if ($get[\'search_text\'] != "") {
         $where .= "";
     }
-    $sql = "SELECT COUNT(std.std_id) AS total_row
-        FROM cse_v2.student_data std
-        WHERE std.year_graduated = \'{$get[\'year_graduated\']}\' $where";
+    $sql = "SELECT COUNT(*) AS total_row
+        FROM '.$db_table.$where_code.'";
 
     $q = $this->db->query($sql)->row();
     $total_row = $q->total_row;
     $page = (isset($get[\'page\'])) ? $get[\'page\'] : 1;
 
     $this->load->helper(\'pagination\');
-    $config[\'base_url\'] = site_url(\''.$controller_name.'/table_list\');
+    $config[\'base_url\'] = site_url(\''.$controller_name.'/get_list\');
     $config[\'total_row\'] = $total_row;
     $config[\'per_page\'] = 100;
     gen_pagination($config);
@@ -56,17 +72,14 @@ public function table_list()
     $start = ($page - 1) * $limit;
     $data[\'start\'] = $start;
 
-    $sql = "SELECT std.*
-        FROM cse_v2.student_data std
-        WHERE std.year_graduated = \'{$get[\'year_graduated\']}\' $where
-        ORDER BY std.maj_name, std.fac_name, std.std_id, std.citizen_id
+    $sql = "SELECT '.$select_column.'
+        FROM '.$db_table.$where_code.'
         LIMIT $limit OFFSET $start";
 
-    $data[\'student_list\'] = $this->db->query($sql)->result();
+    $data[\''.$ex[1].'_list\'] = $this->db->query($sql)->result();
 
-    $this->load->view(\''.$classname.'/list_view\', $data);
+    $this->load->view(\''.$folder_name.'/list_view\', $data);
 }
-
 ';
 ?>
 <h5>

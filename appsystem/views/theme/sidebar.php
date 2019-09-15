@@ -19,6 +19,11 @@ $sess = $this->session->userdata();
                         <i class="fa fa-home"></i> หน้าหลัก (Home)
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('structure'); ?>">
+                        <i class="fa fa-home"></i> Project structure
+                    </a>
+                </li>
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#">
                         <i class="fa fa-database"></i> CRUD
