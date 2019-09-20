@@ -27,7 +27,8 @@ foreach ($input_list as $key => $input) {
               <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
             </div>';
             }
-        $form_group .='     <fieldset class="form-group col-md-6">
+        $form_group .='
+        <fieldset class="form-group col-md-6">
             <label for="'.$input['column_name'].'">'.$input['label'].'</label><br>'
         .$radio.'
         </fieldset>';
@@ -53,7 +54,8 @@ foreach ($input_list as $key => $input) {
               <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
             </div>';
             }
-        $form_group .='     <fieldset class="form-group col-md-6">
+        $form_group .='
+        <fieldset class="form-group col-md-6">
             <label for="'.$input['column_name'].'">'.$input['label'].'</label><br>'
         .$checkbox.'
         </fieldset>';

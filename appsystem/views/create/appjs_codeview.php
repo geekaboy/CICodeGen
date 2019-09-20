@@ -1,44 +1,42 @@
 <?php
 $ex= explode('.', $db_table);
 $classname = ucfirst($ex[1]);
+$controller_name = mb_strtolower($ex[1]);
 $model_code = htmlspecialchars(
 '$(document).ready(function() {
 
     $(\'form[name="'.$form_name.'"]\').on(\'submit\', save);
 });//END Ready
 
-function save(event){
-    event.preventDefault();
-    $(\'#btn_sendForm\').attr("disabled", true);
-    var url = $(this).attr(\'action\');
-    var param = $(this).serializeJSON();
+function save(el){
+    $(\'.btn-save\').attr("disabled", true);
+    var url = site_url+"'.$controller_name.'/save";
+    var param = $(\'form[name="'.$form_name.'"]\').serializeJSON();
     $.post(url, param, function(resp, textStatus, xhr) {
-
         if(resp.is_success){
             new PNotify({
-                title: \'สำเร็จ\',
+                title: \'Successfuly\',
                 text: resp.msg,
                 type: \'success\'
             });
-
             setTimeout(function () {
                 window.location.reload();
             }, 2000);
-
-
         }else{
             $(\'.btn-save\').attr("disabled", false);
-
             new PNotify({
-                title: \'แจ้งเตือน\',
+                title: \'Warning\',
                 text: resp.msg,
                 type: \'warning\'
             });
         }
-
-
     },\'json\').fail(function(){
         $(\'.btn-save\').attr("disabled", false);
+        new PNotify({
+            title: \'Warning\',
+            text: \'Something wrong, Pleas try again later.\',
+            type: \'error\'
+        });
     });
 }
 ');
