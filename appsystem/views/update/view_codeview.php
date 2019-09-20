@@ -106,7 +106,7 @@ $html = '<form name="'.$form_name.'">
     $form_group.'
     </div>
     <div class="text-center">
-        <button type="submit" class="btn btn-primary btn-edit">SAVE</button>
+        <button type="submit" class="btn btn-primary btn-edit" onclick="update(this)">SAVE</button>
     </div>
 </form>';
 ?>
