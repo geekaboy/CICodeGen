@@ -34,19 +34,19 @@
 
     <script src="<?php echo base_url(); ?>appjs/global_variable.js"></script>
 
-        <!-- Plugins -->
-        <?php
-        if (isset($plugin)) {
-            echo get_plugin($plugin);
-        }
-        ?>
+    <!-- Plugins -->
+    <?php
+    if (isset($plugin)) {
+        echo get_plugin($plugin);
+    }
+    ?>
 
-        <!-- AppJS-->
-        <?php
-        if (isset($appjs)) {
-            echo get_plugin($appjs);
-        }
-        ?>
-    </body>
+    <!-- AppJS-->
+    <?php
+    if (isset($appjs)) {
+        echo get_plugin($appjs);
+    }
+    ?>
+</body>
 
 </html>
