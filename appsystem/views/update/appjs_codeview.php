@@ -1,47 +1,58 @@
 <?php
 $ex= explode('.', $db_table);
 $classname = ucfirst($ex[1]);
+$controller_name = mb_strtolower($ex[1]);
+$folder_name = mb_strtolower($ex[1]);
+$param_code = '';
+foreach ($input_list as $key => $input) {
+    $param_code.= $input['column_name'].':$(\'#'.$input['column_name'].'\').va(),
+                ';
+}
 $model_code = htmlspecialchars(
-'$(document).ready(function() {
+'//Create by: @'.$developer_name.' At '.date('Y-m-d').'
+$(document).ready(function() {
 
-    $(\'form[name="'.$form_name.'"]\').on(\'submit\', save);
+
 });//END Ready
 
-function save(event){
-    event.preventDefault();
-    $(\'#btn_sendForm\').attr("disabled", true);
-    var url = $(this).attr(\'action\');
-    var param = $(this).serializeJSON();
-    $.post(url, param, function(resp, textStatus, xhr) {
-
-        if(resp.is_success){
-            new PNotify({
-                title: \'สำเร็จ\',
-                text: resp.msg,
-                type: \'success\'
-            });
-
-            setTimeout(function () {
-                window.location.reload();
-            }, 2000);
-
-
-        }else{
-            $(\'.btn-save\').attr("disabled", false);
-
-            new PNotify({
-                title: \'แจ้งเตือน\',
-                text: resp.msg,
-                type: \'warning\'
+function update(){
+    Swal.fire({
+        title: \'Confirmation\',
+        text: \'ท่านต้องการแก้ไขข้อมูล ใช่ หรือ ไม่ ?\',
+        type: \'warning\',
+        showCancelButton: true,
+        confirmButtonColor: \'#3085d6\',
+        cancelButtonColor: \'#d33\',
+        confirmButtonText: \'Yes่\',
+        cancelButtonText: \'No\'
+    }).then(function(result){
+        if (result.value) {
+            show_preload();
+            var url = site_url+"'.$controller_name.'/update";
+            var param =  $(\'form[name="'.$form_name.'"]\').serializeJSON();
+            $.post(url, param, function(resp, textStatus, xhr) {
+                if(resp.is_success){
+                    window.location.reload();
+                }else{
+                    hide_preload();
+                    Swal.fire({
+                        title: \'Warning\',
+                        text: resp.msg,
+                        type: \'warning\',
+                    });
+                }
+            },\'json\').fail(function(){
+                hide_preload();
+                Swal.fire({
+                    title: \'Warning\',
+                    text: \'Somthing wrong, Please try again leter.\',
+                    type: \'warning\',
+                });
             });
         }
-
-
-    },\'json\').fail(function(){
-        $(\'.btn-save\').attr("disabled", false);
     });
 }
 ');
 ?>
-<h5>Add below code to your javascript place.</h5>
+<h5>Copy below code to appjs/<?php echo $folder_name; ?>/app.js</h5>
 <pre class="line-numbers language-javascript"><code><?php echo $model_code; ?></code></pre>

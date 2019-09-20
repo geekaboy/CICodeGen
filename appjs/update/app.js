@@ -18,7 +18,7 @@ function get_build_form_view(){
     var param = {
         table_name:$(this).val()
     };
-    var url = site_url+'create/build_form_view?';
+    var url = site_url+'update/build_form_view?';
     url+= $.param(param);
     $('#div_build_form').load(url,function(){
 
@@ -140,7 +140,7 @@ function generate() {
         developer_name:$('#developer_name').val(),
         input_list:input_list
     };
-    var url = site_url+'create/generate';
+    var url = site_url+'update/generate';
     $('#div_code_view').load(url, param, function(data){
 
         $('html, body').animate({

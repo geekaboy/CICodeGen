@@ -3,7 +3,7 @@
 </div>
 <fieldset class="form-group col-md-4">
     <label for="form_name">Form name :</label>
-    <input type="text" class="form-control" id="form_name" placeholder="Ex. SS2SEK">
+    <input type="text" class="form-control" id="form_name" placeholder="Ex. form-edit">
 </fieldset>
 <fieldset class="form-group col-md-4">
     <label for="developer_name">Developer name :</label>

@@ -3,7 +3,8 @@ $ex= explode('.', $db_table);
 $classname = ucfirst($ex[1]);
 $folder_name  = $ex[1];
 
-$form_group = '';
+$form_group = '
+        <input type="hidden" value="<?php echo $id; ?>" id="id" name="id"/>';
 foreach ($input_list as $key => $input) {
     switch ($input['input_type']) {
         case 'text':
@@ -12,7 +13,7 @@ foreach ($input_list as $key => $input) {
         $form_group.='
         <fieldset class="form-group col-md-6">
           <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="'.$input['input_type'].'" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
+          <input type="'.$input['input_type'].'" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
         </fieldset>';
             break;
 
@@ -22,7 +23,7 @@ foreach ($input_list as $key => $input) {
             foreach ($input['option']  as $key => $option) {
             $radio.='
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="'.$input['column_name'].'" id="'.$option['id'].'" value="'.$option['value'].'">
+              <input class="form-check-input" type="radio" name="'.$input['column_name'].'" id="'.$option['id'].'" value="'.$option['value'].'" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
               <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
             </div>';
             }
@@ -36,7 +37,7 @@ foreach ($input_list as $key => $input) {
         $form_group.='
         <fieldset class="form-group col-md-6">
           <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
+          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
         </fieldset>';
         }
 
@@ -62,7 +63,7 @@ foreach ($input_list as $key => $input) {
         $form_group.='
         <fieldset class="form-group col-md-6">
           <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
+          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
         </fieldset>';
         }
             break;
@@ -85,7 +86,7 @@ foreach ($input_list as $key => $input) {
         $form_group.='
         <fieldset class="form-group col-md-6">
           <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
+          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
         </fieldset>';
         }
             break;
@@ -94,7 +95,7 @@ foreach ($input_list as $key => $input) {
         $form_group.='
         <fieldset class="form-group">
           <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <textarea class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" rows="3"></textarea>
+          <textarea class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" rows="3"><?php echo $rdata->'.$input['column_name'].'; ?></textarea>
         </fieldset>';
             break;
     }
@@ -105,7 +106,7 @@ $html = '<form name="'.$form_name.'">
     $form_group.'
     </div>
     <div class="text-center">
-        <button type="submit" class="btn btn-primary btn-save">SAVE</button>
+        <button type="submit" class="btn btn-primary btn-edit">SAVE</button>
     </div>
 </form>';
 ?>
@@ -123,13 +124,8 @@ $html = '<form name="'.$form_name.'">
     </div>
 </div>
 <h5>
-    Step 1 Create file <span class="text-info">add_view.php</span>
-    in folder views/<?php echo $folder_name;?> and copy below code to <span class="text-info">add_view.php</span>
+    Step 1 Create file <span class="text-info">edit_view.php</span>
+    in folder views/<?php echo $folder_name;?> and copy below code to <span class="text-info">edit_view.php</span>
 </h5>
 
 <pre class="line-numbers language-html" ><code><?php echo htmlspecialchars($html); ?></code></pre>
-<hr>
-<div class="col-md-12 mt-3">
-    <h5><i class="fa fa-file-code-o" aria-hidden="true"></i> Preview form</h5>
-    <?php echo $html; ?>
-</div>
