@@ -17,7 +17,7 @@ function get_build_form_view(){
     var param = {
         table_name:$(this).val()
     };
-    var url = site_url+'read/build_code_view?';
+    var url = site_url+'deletegen/build_code_view?';
     url+= $.param(param);
     $('#div_build_form').load(url,function(){
         $('html, body').animate({
@@ -37,6 +37,7 @@ function generate() {
         var column_name = $(el).data('column-name');
         var arr = {
             'column_name':column_name,
+            'operator':$('#op_'+column_name).val(),
             'label':$('#input_label_'+column_name).val(),
             'column_default':$(el).data('column-default'),
             'data_type':$(el).data('data-type')
@@ -53,7 +54,7 @@ function generate() {
     };
     console.log(param);
     // return false;
-    var url = site_url+'read/generate';
+    var url = site_url+'deletegen/generate';
     $('#div_code_view').load(url, param, function(data){
 
         $('html, body').animate({

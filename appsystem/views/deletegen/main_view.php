@@ -13,7 +13,7 @@
     <!-- Breadcrumb-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">CI:CODE</li>
-        <li class="breadcrumb-item active">Read</li>
+        <li class="breadcrumb-item active">Delete</li>
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -22,7 +22,7 @@
                     <div class="text-center">
                         <h3>
                             <i class="fa fa-code" aria-hidden="true"></i>
-                            Read
+                            Delete
                             <i class="fa fa-code" aria-hidden="true"></i>
 
                         </h3>

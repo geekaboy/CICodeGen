@@ -1,6 +1,7 @@
 <?php
 $ex= explode('.', $db_table);
 $classname = ucfirst($ex[1]);
+$controller_name = $ex[1];
 $table_name= $ex[1];
 $folder_name  = $ex[1];
 $html = '<div class="row">
@@ -81,6 +82,16 @@ $table_view_code = '<div class="row justify-content-center mt-5">
             <tr>
                 <td><?php echo $i_row; ?>. </td>
                 '.$table_td_code.'
+                <td class="text-center">
+                  <div class="btn-group" role="group">
+                    <a class="btn btn-warning" href="<?php echo site_url(\''.$controller_name.'/edit_view?id=\'.$table_name->id;);?>">
+                      <i class="fa fa-edit"></i> EDIT
+                    </a>
+                    <button type="button" class="btn btn-danger" data-id="<?php echo $table_name->[TABLE-PRIMARY-KEY]; ?>" onclick="delete(this)">
+                      <i class="fa fa-trash-o"></i> DELETE
+                    </button>
+                  </div>
+                </td>
             </tr>
         <?php
         }

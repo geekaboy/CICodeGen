@@ -2,6 +2,7 @@
 $ex= explode('.', $db_table);
 $classname = ucfirst($ex[1]);
 $table_name= $ex[1];
+$controller_name= $ex[1];
 $folder_name  = $ex[1];
 
 $table_th_code = '';
@@ -43,6 +44,24 @@ function get_list(){
 function clear_search(){
     $(\'#search_text\').val(\'\');
     get_list();
+}
+
+function delete(el) {
+
+    var url = site_url + "'.$controller_name.'/del";
+    var param = {
+        id: $(\'el\').val()
+    };
+
+    $.post(url, param, function (resp, textStatus, xhr) {
+        if (resp.is_success) {
+            alert(resp.msg)
+        }else{
+            alert(resp.msg)
+        }
+    }, \'json\').fail(function(){
+        alert("Fail");
+    });
 }
 ';
 

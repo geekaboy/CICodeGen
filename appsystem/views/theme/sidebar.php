@@ -45,7 +45,7 @@ $sess = $this->session->userdata();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link sub-menu" href="<?php echo site_url('delete'); ?>">
+                            <a class="nav-link sub-menu" href="<?php echo site_url('deletegen'); ?>">
                                 <i class="fa fa-dot-circle-o nav-icon"></i> Delete
                             </a>
                         </li>
