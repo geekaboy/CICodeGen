@@ -32,19 +32,19 @@
     <script src="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert_all.js"></script>
 
 
-    <script src="<?php echo base_url(); ?>appjs/global_variable.js"></script>
+    <script src="<?php echo base_url(); ?>appjs/global.js"></script>
 
     <!-- Plugins -->
     <?php
     if (isset($plugin)) {
-        echo get_plugin($plugin);
+        echo generate_plugin($plugin);
     }
     ?>
 
     <!-- AppJS-->
     <?php
     if (isset($appjs)) {
-        echo get_plugin($appjs);
+        echo generate_plugin($appjs);
     }
     ?>
 </body>

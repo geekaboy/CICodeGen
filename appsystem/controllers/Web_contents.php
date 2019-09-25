@@ -1,34 +1,18 @@
 <?php
-//------------[Controller File name : Web_link.php ]----------------------//
+//------------[Controller File name : Web_contents.php ]----------------------//
+//----------------[ Create by: @SS2SEK At 2019-09-25 ]----------------------//
 if (!defined('BASEPATH'))  exit('No direct script access allowed');
 
-class Demo extends CI_Controller {
+class Web_contents extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('database_table_model','db_table');
-
     }
 
-    private  $limit = 30;
+    public function index()
+    {
 
-    public function index(){
-        // $table = $this->db_table->get_table();
-
-        $this->main_view();
     }
-
-    public function main_view(){
-        //@Plugin & @Appjs
-        $data['plugin'] = array();
-        $data['appjs'] = array();
-
-        //@VIEW
-        $this->load->view('demo/theme/header', $data);
-        $this->load->view('demo/main_view');
-        $this->load->view('demo/theme/footer');
-    }
-
     //Create by: @SS2SEK At 2019-09-25
     public function add_view()
     {
@@ -50,12 +34,11 @@ class Demo extends CI_Controller {
 
         //Validation form
         $frm = $this->form_validation;
-
         $frm->set_rules('content_title', 'content_title' , 'trim|required');
         $frm->set_rules('content_note', 'content_note' , 'trim|required');
         $frm->set_rules('content_type_id', 'content_type_id' , 'trim|required');
-        $frm->set_rules('is_publish', 'is_publish' , 'trim|required');
-
+        $frm->set_rules('is_gallery', 'is_gallery' , 'trim|required');
+        $frm->set_rules('is_publish[]', 'is_publish' , 'trim|required');
         $frm->set_message('required', 'Please input %s');
 
         if (!$frm->run()) {
@@ -63,8 +46,8 @@ class Demo extends CI_Controller {
             $message .= form_error('content_title');
             $message .= form_error('content_note');
             $message .= form_error('content_type_id');
-            $message .= form_error('is_publish');
-
+            $message .= form_error('is_gallery');
+            $message .= form_error('is_publish[]');
             echo json_encode( array(
                 'is_success' => FALSE,
                 'msg' => $message
@@ -76,27 +59,20 @@ class Demo extends CI_Controller {
                 'content_title'=>$post['content_title'],
                 'content_note'=>$post['content_note'],
                 'content_type_id'=>$post['content_type_id'],
+                'is_gallery'=>$post['is_gallery'],
                 'is_publish'=>$post['is_publish'],
-
             );
             $is_sucess = $this->db->insert('crru.web_contents', $data);
-            if($is_sucess){
-                echo json_encode(
-                    array(
-                        'is_success'=>TRUE,
-                        'msg'=>'Saved'
-                    )
-                );
-            }else{
-                echo json_encode(
-                    array(
-                        'is_success'=>FALSE,
-                        'msg'=>'Error'
-                    )
-                );
-            }
+            $msg = ($is_success)?'Saved':'Error';
+            echo json_encode(
+                array(
+                    'is_success'=>$is_sucess,
+                    'msg'=>$msg
+                )
+            );
         }//End if else
 
     }//end function
 
-}//end class
+}
+?>

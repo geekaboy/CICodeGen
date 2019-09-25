@@ -13,7 +13,13 @@ class '.$classname.' extends CI_Controller {
     public function __construct(){
         parent::__construct();
     }
-}
+
+    public function index()
+    {
+
+    }
+
+}//END CLASS
 ?>');
 ?>
 <h5>
@@ -44,7 +50,15 @@ if($cond != ''){
 
 $controller_code = 'public function list_view()
 {
-    $this->load->view(\''.$controller_name.'/list_view\');
+    //@Plugin & @Appjs
+    $data[\'plugin\'] = array();
+    $data[\'appjs\'] = array(\'appjs/'.$folder_name.'/app.js\');
+
+	//@VIEW
+	$this->load->view(\'theme/header\', $data);
+	$this->load->view(\''.$controller_name.'/list_view\');
+	$this->load->view(\'theme/footer\');
+
 }
 
 public function get_list()
@@ -78,7 +92,7 @@ public function get_list()
 
     $data[\''.$ex[1].'_list\'] = $this->db->query($sql)->result();
 
-    $this->load->view(\''.$folder_name.'/list_view\', $data);
+    $this->load->view(\''.$folder_name.'/table_view\', $data);
 }
 ';
 ?>

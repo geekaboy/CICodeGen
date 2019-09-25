@@ -17,14 +17,12 @@
                         <thead>
                             <tr class="bg-info">
                                 <th>Title</th>
-                                <th>ID attr</th>
                                 <th style="max-width: 200px !important;">Value attr</th>
                             </tr>
                         </thead>
                         <tbody id="tb_option">
                             <tr>
                                 <td><input class="form-control" type="text" name="title" id="title"/></td>
-                                <td><input class="form-control" type="text" name="id" id="id"/></td>
                                 <td><input class="form-control" type="text" name="value" id="value"/></td>
                             </tr>
                         </tbody>

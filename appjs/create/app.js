@@ -81,14 +81,12 @@ function optionModal(input_type, column_name) {
             $.each(option_val, function(index, obj) {
                  html+='<tr>'+
                      '<td><input class="form-control" type="text" name="title" id="title" value="'+obj.title+'"/></td>'+
-                     '<td><input class="form-control" type="text" name="id" id="id" value="'+obj.id+'"/></td>'+
                      '<td><input class="form-control" type="text" name="value" id="value" value="'+obj.value+'"/></td>'+
                  '</tr>';
             });
         }
         html += '<tr>'+
             '<td><input class="form-control" type="text" name="title" id="title"/></td>'+
-            '<td><input class="form-control" type="text" name="id" id="id"/></td>'+
             '<td><input class="form-control" type="text" name="value" id="value"/></td>'+
         '</tr>';
         $('#tb_option').html(html);
@@ -101,7 +99,6 @@ function optionModal(input_type, column_name) {
 function addNewOption(){
     var html = '<tr>'+
         '<td><input class="form-control" type="text" name="title" id="title"/></td>'+
-        '<td><input class="form-control" type="text" name="id" id="id"/></td>'+
         '<td><input class="form-control" type="text" name="value" id="value"/></td>'+
     '</tr>';
     $('#tb_option').append(html);
@@ -110,15 +107,14 @@ function addNewOption(){
 function addOption(){
     var option_el = $('#tb_option>tr');
     var option_list = [];
-    var show_table_option = '<b><small>Input option</small></b><table class="table table-bordered table-sm"><thead><tr><th>Title</th><th>ID</th><th>Value</th></tr></thead>';
+    var show_table_option = '<b><small>Input option</small></b><table class="table table-bordered table-sm"><thead><tr><th>Title</th><th>Value</th></tr></thead>';
     $.each(option_el, function(index, el) {
-        if($(el).find('#title').val() != '' && $(el).find('#name').val() != '' && $(el).find('#id').val() != '' && $(el).find('#value').val() != ''){
+        if($(el).find('#title').val() != ''  && $(el).find('#value').val() != ''){
             var arr = {
                 title:$(el).find('#title').val(),
-                id : $(el).find('#id').val(),
                 value : $(el).find('#value').val()
             };
-            show_table_option+= '<tr><td>'+arr.title+'</td><td>'+arr.id+'</td><td>'+arr.value+'</td></tr>';
+            show_table_option+= '<tr><td>'+arr.title+'</td><td>'+arr.value+'</td></tr>';
 
             option_list.push(arr);
         }

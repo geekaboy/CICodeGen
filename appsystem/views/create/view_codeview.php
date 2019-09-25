@@ -10,34 +10,35 @@ foreach ($input_list as $key => $input) {
         case 'number':
         case 'email':
         $form_group.='
-        <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="'.$input['input_type'].'" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
-        </fieldset>';
-            break;
+                <fieldset class="form-group col-md-6">
+                  <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+                  <input type="'.$input['input_type'].'" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
+                </fieldset>';
+        break;
 
         case 'radio':
         if($input['option'] != ''){
             $radio ='';
             foreach ($input['option']  as $key => $option) {
             $radio.='
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="'.$input['column_name'].'" id="'.$option['id'].'" value="'.$option['value'].'">
-              <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
-            </div>';
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="'.$input['column_name'].'"  value="'.$option['value'].'">
+                      <label class="form-check-label">'.$option['title'].'</label>
+                    </div>';
             }
-        $form_group .='     <fieldset class="form-group col-md-6">
-            <label for="'.$input['column_name'].'">'.$input['label'].'</label><br>'
-        .$radio.'
-        </fieldset>';
+            $form_group .='
+                <fieldset class="form-group col-md-6">
+                    <label for="'.$input['column_name'].'">'.$input['label'].'</label><br>'
+                .$radio.'
+                </fieldset>';
 
         }else{
 
-        $form_group.='
-        <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
-        </fieldset>';
+            $form_group.='
+                <fieldset class="form-group col-md-6">
+                  <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+                  <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
+                </fieldset>';
         }
 
             break;
@@ -47,23 +48,24 @@ foreach ($input_list as $key => $input) {
             $checkbox ='';
             foreach ($input['option']  as $key => $option) {
             $checkbox.='
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="'.$input['column_name'].'[]" id="'.$option['id'].'" value="'.$option['value'].'">
-              <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
-            </div>';
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="'.$input['column_name'].'[]" value="'.$option['value'].'">
+                      <label class="form-check-label" >'.$option['title'].'</label>
+                    </div>';
             }
-        $form_group .='     <fieldset class="form-group col-md-6">
-            <label for="'.$input['column_name'].'">'.$input['label'].'</label><br>'
-        .$checkbox.'
-        </fieldset>';
+            $form_group .='
+                <fieldset class="form-group col-md-6">
+                    <label for="'.$input['column_name'].'">'.$input['label'].'</label><br>'
+                .$checkbox.'
+                </fieldset>';
 
         }else{
 
-        $form_group.='
-        <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
-        </fieldset>';
+            $form_group.='
+                <fieldset class="form-group col-md-6">
+                  <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+                  <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
+                </fieldset>';
         }
             break;
 
@@ -74,40 +76,44 @@ foreach ($input_list as $key => $input) {
                 $option_el .= '<option value="'.$option['value'].'">'.$option['title'].'</option>';
             }
             $form_group.='
-        <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <select class="form-control" id="'.$input['column_name'].'" name="'.$input['column_name'].'">
-            '.$option_el.'
-          </select>
-        </fieldset>';
+                <fieldset class="form-group col-md-6">
+                  <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+                  <select class="form-control" id="'.$input['column_name'].'" name="'.$input['column_name'].'">
+                    '.$option_el.'
+                  </select>
+                </fieldset>';
         }else{
 
         $form_group.='
-        <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
-        </fieldset>';
+            <fieldset class="form-group col-md-6">
+              <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+              <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="">
+            </fieldset>';
         }
             break;
 
         case 'textarea':
         $form_group.='
-        <fieldset class="form-group">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <textarea class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" rows="3"></textarea>
-        </fieldset>';
+                <fieldset class="form-group col-md-6">
+                  <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+                  <textarea class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" rows="3"></textarea>
+                </fieldset>';
             break;
     }
 }
 
-$html = '<form name="'.$form_name.'">
-    <div class="row">'.
-    $form_group.'
+$html = '
+<main role="main" class="container">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <form name="'.$form_name.'" class="row">'.$form_group.'
+                <div class="col-md-12 text-center mt-3">
+                    <button type="button" class="btn btn-lg btn-primary btn-save" onclick="save()">SAVE</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="text-center">
-        <button type="submit" class="btn btn-primary btn-save">SAVE</button>
-    </div>
-</form>';
+</main>';
 ?>
 
 <div class="row">
@@ -117,8 +123,6 @@ $html = '<form name="'.$form_name.'">
             <li>Bootstrap v.4</li>
             <li>JQuery</li>
             <li>SerializeJSON</li>
-            <li>PNotify</li>
-            <li>SweetAlert2</li>
         </ol>
     </div>
 </div>
@@ -130,6 +134,9 @@ $html = '<form name="'.$form_name.'">
 <pre class="line-numbers language-html" ><code><?php echo htmlspecialchars($html); ?></code></pre>
 <hr>
 <div class="col-md-12 mt-3">
-    <h5><i class="fa fa-file-code-o" aria-hidden="true"></i> Preview form</h5>
+    <div class="text-center mb-5">
+        <h5><i class="fa fa-file-code-o" aria-hidden="true"></i> Preview </h5>
+    </div>
+
     <?php echo $html; ?>
 </div>

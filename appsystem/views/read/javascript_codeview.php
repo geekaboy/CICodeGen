@@ -34,7 +34,7 @@ $javascript_codeview = '$(document).ready(function () {
 function get_list(){
     $(\'#dev_table\').html(\'\');
     var url = site_url+"'.$table_name.'/get_list?"+
-                \'search_text=\'+$(\'#search_text\').val()
+                \'search_text=\'+$(\'#search_text\').val();
     $(\'#div_table\').load(url, function (response, status, request) {
         console.log(\'status=>\', status);
     });
@@ -46,8 +46,11 @@ function clear_search(){
     get_list();
 }
 
-function delete(el) {
-
+function del(el) {
+    var cf = confirm("Want to delete?");
+    if(!cf){
+        return false;
+    }
     var url = site_url + "'.$controller_name.'/del";
     var param = {
         id: $(\'el\').val()
@@ -55,9 +58,9 @@ function delete(el) {
 
     $.post(url, param, function (resp, textStatus, xhr) {
         if (resp.is_success) {
-            alert(resp.msg)
+            alert(resp.msg);
         }else{
-            alert(resp.msg)
+            alert(resp.msg);
         }
     }, \'json\').fail(function(){
         alert("Fail");
