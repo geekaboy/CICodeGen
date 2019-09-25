@@ -14,8 +14,7 @@ class Demo extends CI_Controller {
 
     public function index(){
         $table = $this->db_table->get_table();
-        echo "<pre>";
-        print_r($table);
+        
         // $this->main_view();
     }
 

@@ -15,12 +15,21 @@
 
                             </div>
                             <div class="text-center">
-                                'Developer' => 'SS2SEK',<br>
-                                'Contact' => 'suchartsek.p@gmail.com',<br>
-                                'Repo' => 'https://gitlab.com/geekaboy/cicodegen',<br>
-                                'Version' => '0.1 Bata',<br>
-                                'Update lastest' => <?php echo date('Y-m-d'); ?>,<br>
-                                'License' => 'GPL 3'
+                                Developer => SS2SEK<br>
+                                Contact => suchartsek.p@gmail.com<br>
+                                Repo => https://gitlab.com/geekaboy/cicodegen<br>
+                                Version => 0.1 Bata<br>
+                                Update lastest => <?php echo date('Y-m-d'); ?><br>
+                                License => GPL 3
+                            </div>
+                            <br>
+                            <div class="text-center">
+                                <h4><u>Dev. on tech stack:</u> </h4>
+                                Database => PostgreSQL 10.10, MySQL 5.7.26 <br>
+                                OS => Ubuntu 18.04.1 LTS<br>
+                                HTTP Server => Apache2.2.34 <br>
+                                PHP => 7.2<br>
+                                Framework => codeigniter 3<br>
                             </div>
                         </div>
 

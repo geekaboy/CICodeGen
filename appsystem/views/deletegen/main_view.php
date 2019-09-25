@@ -27,6 +27,9 @@
 
                         </h3>
                     </div>
+                    <h5>
+                        <span class="badge badge-pill badge-success">1</span> Select database
+                    </h5>
                     <div class="row mt-3">
                         <fieldset class="form-group col-md-3">
 
