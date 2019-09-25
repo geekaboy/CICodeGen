@@ -29,7 +29,7 @@ class Create extends CI_Controller {
             'appjs/create/app.js'
         );
 
-        $data['table_list'] = $this->db_table->get_table();
+        $data['schema_list'] = $this->db_table->get_table_schema();
 
         //@VIEW
         $this->load->view('theme/header', $data);

@@ -6,13 +6,17 @@ class Demo extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
+        $this->load->model('database_table_model','db_table');
 
     }
 
     private  $limit = 30;
 
     public function index(){
-        $this->main_view();
+        $table = $this->db_table->get_table();
+        echo "<pre>";
+        print_r($table);
+        // $this->main_view();
     }
 
     public function main_view(){

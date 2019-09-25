@@ -1,10 +1,35 @@
 $(document).ready(function() {
 
-
     $('#db_table').change(get_build_form_view);
+    $('#db_schema').change(get_table_list);
+
     $('#add-option').click(addOption);
 
 });//END READY
+
+function get_table_list(){
+    if($(this).val() == ''){
+        return false;
+    }
+    var param = {
+        table_schema:$(this).val()
+    };
+    var url = site_url+'getdatabase/get_table_list?';
+    url+= $.param(param);
+
+    $.getJSON(url, function(resp, textStatus) {
+        var option_html ='<option value="">Select table</option>';
+        $.each(resp, function(index, data) {
+            option_html += '<option value="'+data.table_schema+'.'+data.table_name+'">'+data.table_schema+'.'+data.table_name+'</option>';
+        });
+        $('#db_table').html(option_html);
+        //Set event change
+
+
+    });
+
+
+}
 
 function get_build_form_view(){
     show_preload();

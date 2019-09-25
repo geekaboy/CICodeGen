@@ -27,18 +27,25 @@
 
                         </h3>
                     </div>
+                    <h5>
+                        <span class="badge badge-pill badge-success">1</span> Select database
+                    </h5>
                     <div class="row mt-3">
-                        <fieldset class="form-group col-md-4">
-                            <h5>
-                                <span class="badge badge-pill badge-success">1</span> Database table list :
-                            </h5>
-                            <select class="form-control" name="db_table" id="db_table">
-                                <option value="">Select table</option>
-                            <?php foreach ($table_list as $key => $table): ?>
-                                <option value="<?php echo $table->table_schema.'.'.$table->table_name; ?>">
-                                    <?php echo $table->table_schema.'.'.$table->table_name; ?>
+                        <fieldset class="form-group col-md-3">
+
+                            <select class="form-control" name="db_schema" id="db_schema">
+                                <option value="">Select schema</option>
+                            <?php foreach ($schema_list as $key => $schema): ?>
+                                <option value="<?php echo $schema->table_schema; ?>">
+                                    <?php echo $schema->table_schema; ?>
                                 </option>
                             <?php endforeach; ?>
+                            </select>
+
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <select class="form-control" name="db_table" id="db_table">
+
                             </select>
 
                         </fieldset>

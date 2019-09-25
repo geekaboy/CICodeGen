@@ -11,12 +11,31 @@ class Database_table_model extends CI_Model
         $this->dbDriver = $this->db->dbdriver;
     }
 
-    public function get_table()
+    public function get_table_schema()
+    {
+        switch ($this->dbDriver) {
+            case 'postgre':
+                return $this->get_table_schema_postgreSQL();
+                break;
+            case 'mysqli':
+                echo "mysqli";
+                break;
+
+            default:
+                // code...
+                break;
+        }
+    }
+
+    public function get_table($table_schema)
     {
 
         switch ($this->dbDriver) {
             case 'postgre':
-                return $this->get_table_postgreSQL();
+                return $this->get_table_postgreSQL($table_schema);
+                break;
+            case 'mysqli':
+                echo "mysqli";
                 break;
 
             default:
@@ -44,12 +63,26 @@ class Database_table_model extends CI_Model
 
     //========== PRIVATE METHOD =============//
 
-    private function get_table_postgreSQL()
+    private function get_table_schema_postgreSQL()
+    {
+        $sql = "SELECT table_schema
+                FROM information_schema.tables
+                WHERE table_schema <> 'information_schema'
+                	AND table_schema <> 'pg_catalog'
+                GROUP BY table_schema
+                ORDER BY table_schema";
+        return $this->db->query($sql)->result();
+
+
+    }
+
+    private function get_table_postgreSQL($table_schema='')
     {
         $sql = "SELECT table_schema,table_name
                 FROM information_schema.tables
                 WHERE table_schema <> 'information_schema'
                 	AND table_schema <> 'pg_catalog'
+                    AND table_schema = {$this->db->escape($table_schema)}
                 ORDER BY table_schema,table_name";
         return $this->db->query($sql)->result();
 

@@ -21,6 +21,7 @@
             <tr class="bg-info">
                 <th width="30">#</th>
                 <th class="text-center" width="50">Select</th>
+                <th class="text-center" width="100">Search by</th>
                 <th class="text-center" width="200">Label</th>
                 <th class="text-center" width="200">Column name</th>
                 <th class="text-center" width="350">Data type</th>
@@ -40,6 +41,10 @@
                             data-column-name="<?php echo $column->column_name; ?>"
                             data-column-default="<?php echo $column->column_default; ?>"
                             data-data-type="<?php echo $column->data_type; ?>" checked/>
+                    </td>
+                    <td class="text-center">
+                        <input type="checkbox" name="search_by_<?php echo $column->column_name; ?>"
+                            id="search_by_<?php echo $column->column_name; ?>"/>
                     </td>
                     <td>
                          <fieldset class="form-group">
