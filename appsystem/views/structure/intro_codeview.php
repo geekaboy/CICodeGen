@@ -1,4 +1,5 @@
 <h5><i class="fa fa-dot-circle-o"></i> Project folder structure</h5>
+&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-download" aria-hidden="true"></i> <a href="https://gitlab.com/geekaboy/ci-starter" target="_blank">Download starter project</a>
 <pre>
     <code class="language-plaintext" data-lang="plaintext">
 your-project/

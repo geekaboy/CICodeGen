@@ -14,7 +14,7 @@ class ControllerName extends CI_Controller {
     {
         $this->main_view();
 
-    };
+    }
     public function main_view()
     {
         //@Plugin & Appjs
