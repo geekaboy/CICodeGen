@@ -41,7 +41,7 @@ public function edit_view()
 	$sql = "SELECT * FROM '.$db_table.'
 	         WHERE  id = {$get[\'id\']}";
 	$q = $this->db->query($sql);
-	$data[\'rdata\'] = $q->result();
+	$data[\'rdata\'] = $q->row();
 
     //@Plugin & Appjs
 	$data[\'plugin\'] = array();
@@ -67,12 +67,12 @@ public function update(){
 		\'id\'=>$post[\'id\']
 	);
 
-	$is_sucess = $this->db->update(\''.$db_table.'\', $data, $condition);
+	$is_success = $this->db->update(\''.$db_table.'\', $data, $condition);
 
     $msg = ($is_success)?\'Successfuly\':\'Somthing wrong, Please try again leter.\';
     echo json_encode(
         array(
-            \'is_success\'=>$is_sucess,
+            \'is_success\'=>$is_success,
             \'msg\'=>$msg
         )
     );

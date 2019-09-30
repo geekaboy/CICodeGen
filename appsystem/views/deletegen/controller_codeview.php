@@ -59,7 +59,7 @@ foreach ($input_list as $key => $input) {
     }
 
     $condition_arr_code .= '\''.$input['column_name'].'\' => $post[\''.$input['column_name'].'\'],
-                ';
+            ';
 
 }
 $controller_code = 'public function del()
@@ -75,14 +75,14 @@ $controller_code = 'public function del()
 
         if ($this->db->delete(\''.$db_table.'\', $cond)) {
             echo json_encode(array(
-                \'is_successful\' => TRUE,
-                \'message\' => \'Successfuly\'
+                \'is_success\' => TRUE,
+                \'msg\' => \'Successfuly\'
             ));
         }
     } else {
         echo json_encode(array(
-            \'is_successful\' => FALSE,
-            \'message\' => \'Data not found.\'
+            \'is_success\' => FALSE,
+            \'msg\' => \'Data not found.\'
         ));
         exit();
     }

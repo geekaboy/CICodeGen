@@ -49,7 +49,7 @@ class Read extends CI_Controller {
     {
         $post = $this->input->post(NULL, TRUE);
         $data['limit'] = $post['limit_list'];
-        $data['search_list'] = $post['search_list'];
+        $data['search_list'] = (isset($post['search_list']))?$post['search_list']:[];
         $data['developer_name'] = $post['developer_name'];
         $data['input_list'] = $post['input_list'];
         $data['db_table'] = $post['db_table'];

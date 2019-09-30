@@ -6,8 +6,9 @@ $table_name= $ex[1];
 $folder_name  = $ex[1];
 
 $search_input = '';
-foreach ($search_list as $key => $input) {
-    $search_input.='
+if(!empty($search_list)){
+    foreach ($search_list as $key => $input) {
+        $search_input.='
                     <div class="col-md-3">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -16,15 +17,8 @@ foreach ($search_list as $key => $input) {
                             <input type="text" class="form-control" id="'.$input.'">
                         </div>
                     </div>';
-        }
-$html = '<main role="main" class="container-fluid">
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <div class="card card-body">
-                <h4 class="card-title text-center">
-                    <i class="fa fa-list"></i> '.$classname.' list
-                </h4>
-                <div class="row justify-content-center mt-5">'.$search_input.'
+    }
+    $search_input.='
                     <div class="col-md-3">
                         <div class="form-group">
                             <button class="btn btn-primary" type="button" id="btn_search">
@@ -34,7 +28,18 @@ $html = '<main role="main" class="container-fluid">
                                 Clear
                             </button>
                         </div>
-                    </div>
+                    </div>';
+}
+
+$html = '<main role="main" class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="card card-body">
+                <h4 class="card-title text-center">
+                    <i class="fa fa-list"></i> '.$classname.' list
+                </h4>
+                <div class="row justify-content-center mt-5">'.$search_input.'
+                    
                 </div>
 
                 <div class="row">
@@ -70,11 +75,7 @@ foreach ($input_list as $key => $input) {
     $table_td_code.='
                     <td><?php echo $'.$table_name.'->'.$input['column_name'].'; ?></td>';
 }
-$search_var = '';
-foreach ($search_list as $key => $sinput) {
-    $search_var.='
-                '.$sinput.':'.'$(\'#'.$sinput.'\').val(),';
-}
+
 $table_view_code = '<div class="row justify-content-center mt-5">
     <?php echo $this->pagination->create_links(); ?>
 </div>

@@ -44,10 +44,13 @@ foreach ($input_list as $key => $input) {
 }
 
 $search_code = '';
-foreach ($search_list as $key => $sinput) {
-    $search_code.= '
+if (!empty($search_list)) {
+    foreach ($search_list as $key => $sinput) {
+        $search_code.= '
     $where .= ($get[\''.$sinput.'\'] != \'\')?" AND '.$sinput.' = {$this->db->escape($get[\''.$sinput.'\'])}":"";';
+    }
 }
+
 
 $controller_code = 'public function list_view()
 {

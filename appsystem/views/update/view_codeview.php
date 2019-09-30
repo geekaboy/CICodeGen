@@ -4,7 +4,7 @@ $classname = ucfirst($ex[1]);
 $folder_name  = $ex[1];
 
 $form_group = '
-        <input type="hidden" value="<?php echo $id; ?>" id="id" name="id"/>';
+        <input type="hidden" id="id" name="id" value="<?php echo $rdata->id; ?>"/>';
 foreach ($input_list as $key => $input) {
     switch ($input['input_type']) {
         case 'text':
@@ -12,8 +12,8 @@ foreach ($input_list as $key => $input) {
         case 'email':
         $form_group.='
         <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="'.$input['input_type'].'" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
+            <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+            <input type="'.$input['input_type'].'" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
         </fieldset>';
             break;
 
@@ -23,8 +23,8 @@ foreach ($input_list as $key => $input) {
             foreach ($input['option']  as $key => $option) {
             $radio.='
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="'.$input['column_name'].'" id="'.$option['id'].'" value="'.$option['value'].'" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
-              <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
+                <input class="form-check-input" type="radio" name="'.$input['column_name'].'" id="'.$option['id'].'" value="'.$option['value'].'" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
+                <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
             </div>';
             }
         $form_group .='
@@ -37,8 +37,8 @@ foreach ($input_list as $key => $input) {
 
         $form_group.='
         <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
+            <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+            <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
         </fieldset>';
         }
 
@@ -50,8 +50,8 @@ foreach ($input_list as $key => $input) {
             foreach ($input['option']  as $key => $option) {
             $checkbox.='
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="'.$input['column_name'].'[]" id="'.$option['id'].'" value="'.$option['value'].'">
-              <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
+                <input class="form-check-input" type="checkbox" name="'.$input['column_name'].'[]" id="'.$option['id'].'" value="'.$option['value'].'">
+                <label class="form-check-label" for="'.$option['id'].'">'.$option['title'].'</label>
             </div>';
             }
         $form_group .='
@@ -64,8 +64,8 @@ foreach ($input_list as $key => $input) {
 
         $form_group.='
         <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
+            <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+            <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
         </fieldset>';
         }
             break;
@@ -74,21 +74,22 @@ foreach ($input_list as $key => $input) {
         if($input['option'] != ''){
             $option_el = '';
             foreach ($input['option']  as $key => $option) {
-                $option_el .= '<option value="'.$option['value'].'">'.$option['title'].'</option>';
+                $option_el .= '<option value="'.$option['value'].'">'.$option['title'].'</option>
+                ';
             }
             $form_group.='
         <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <select class="form-control" id="'.$input['column_name'].'" name="'.$input['column_name'].'">
-            '.$option_el.'
-          </select>
+            <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+            <select class="form-control" id="'.$input['column_name'].'" name="'.$input['column_name'].'">
+                '.$option_el.'
+            </select>
         </fieldset>';
         }else{
 
         $form_group.='
         <fieldset class="form-group col-md-6">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
+            <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+            <input type="text" class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" placeholder="" value="<?php echo $rdata->'.$input['column_name'].'; ?>">
         </fieldset>';
         }
             break;
@@ -96,21 +97,21 @@ foreach ($input_list as $key => $input) {
         case 'textarea':
         $form_group.='
         <fieldset class="form-group">
-          <label for="'.$input['column_name'].'">'.$input['label'].'</label>
-          <textarea class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" rows="3"><?php echo $rdata->'.$input['column_name'].'; ?></textarea>
+            <label for="'.$input['column_name'].'">'.$input['label'].'</label>
+            <textarea class="form-control" name="'.$input['column_name'].'" id="'.$input['column_name'].'" rows="3"><?php echo $rdata->'.$input['column_name'].'; ?></textarea>
         </fieldset>';
             break;
     }
 }
 
-$html = '<form name="'.$form_name.'">
-    <div class="row">'.
-    $form_group.'
-    </div>
+$html = '<main role="main" class="container-fluid">
+    <form name="'.$form_name.'" class="row">'.
+        $form_group.'
+    </form>
     <div class="text-center">
-        <button type="submit" class="btn btn-primary btn-edit" onclick="update(this)">SAVE</button>
+        <button type="submit" class="btn btn-primary btn-edit" onclick="update(this)">UPDATE</button>
     </div>
-</form>';
+</main>';
 ?>
 
 <div class="row">

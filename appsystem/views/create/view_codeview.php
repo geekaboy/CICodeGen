@@ -103,7 +103,7 @@ foreach ($input_list as $key => $input) {
 }
 
 $html = '
-<main role="main" class="container">
+<main role="main" class="container-fluid">
     <div class="row mt-3">
         <div class="col-md-12">
             <form name="'.$form_name.'" class="row">'.$form_group.'

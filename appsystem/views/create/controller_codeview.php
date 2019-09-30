@@ -61,7 +61,7 @@ public function add_view()
 {
     //@Plugin & @Appjs
     $data[\'plugin\'] = array();
-    $data[\'appjs\'] = array(\'assets/'.$folder_name.'/app.js\');
+    $data[\'appjs\'] = array(\'appjs/'.$folder_name.'/app.js\');
 
 	//@VIEW
 	$this->load->view(\'theme/header\', $data);
@@ -90,11 +90,11 @@ public function save()
         //INSERT '.$db_table.' table
         $data = array('.$insertListCode.'
     	);
-    	$is_sucess = $this->db->insert(\''.$db_table.'\', $data);
+    	$is_success = $this->db->insert(\''.$db_table.'\', $data);
         $msg = ($is_success)?\'Saved\':\'Error\';
         echo json_encode(
             array(
-                \'is_success\'=>$is_sucess,
+                \'is_success\'=>$is_success,
                 \'msg\'=>$msg
             )
         );

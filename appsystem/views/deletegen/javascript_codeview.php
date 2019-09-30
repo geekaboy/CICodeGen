@@ -19,15 +19,14 @@ $condition_arr_code = '';
 $all_row = count($input_list);
 foreach ($input_list as $key => $input) {
 
-    $condition_arr_code .= $input['column_name'].' : $(el).data(\''.$input['column_name'].'\'),
-                ';
+    $condition_arr_code .= '
+        '.$input['column_name'].' : $(el).data(\''.$input['column_name'].'\'),';
 
 }
 $javascript_codeview = 'function delete(el) {
 
     var url = site_url + "'.$controller_name.'/del";
-    var param = {
-        '.$condition_arr_code.'
+    var param = {'.$condition_arr_code.'
     };
     $.post(url, param, function (resp, textStatus, xhr) {
         if (resp.is_success) {
@@ -42,6 +41,6 @@ $javascript_codeview = 'function delete(el) {
 
 ?>
 <h5>
-    Copy below code to <span class="text-info">appjs/<?php echo $folder_name;?> /app.js</span>
+    <i class="fa fa-dot-circle-o" aria-hidden="true"></i> Add below code to<span class="text-info">appjs/<?php echo $folder_name;?> /app.js</span>
 </h5>
 <pre class="line-numbers language-javascript" ><code><?php echo htmlspecialchars($javascript_codeview); ?></code></pre>

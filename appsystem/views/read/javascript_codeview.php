@@ -17,10 +17,13 @@ foreach ($input_list as $key => $input) {
 }
 
 $search_var = '';
-foreach ($search_list as $key => $sinput) {
-    $search_var.='
+if (!empty($search_list)) {
+    foreach ($search_list as $key => $sinput) {
+        $search_var.='
             '.$sinput.':'.'$(\'#'.$sinput.'\').val(),';
+    }
 }
+
 $javascript_codeview = '$(document).ready(function () {
 
     get_list();
@@ -53,7 +56,7 @@ function clear_search(){
 }
 
 function del(el) {
-    var cf = confirm("Want to delete?");
+    var cf = confirm("Are you sure you want to delete?");
     if(!cf){
         return false;
     }
@@ -65,6 +68,7 @@ function del(el) {
     $.post(url, param, function (resp, textStatus, xhr) {
         if (resp.is_success) {
             alert(resp.msg);
+            window.location.reload();
         }else{
             alert(resp.msg);
         }

@@ -1,6 +1,7 @@
 <?php
 $ex= explode('.', $db_table);
 $classname = ucfirst($ex[1]);
+$foldername = $ex[1];
 $controller_name = mb_strtolower($ex[1]);
 $model_code = htmlspecialchars(
 '$(document).ready(function() {
@@ -30,5 +31,5 @@ function save(){
 }
 ');
 ?>
-<h5>Add below code to your javascript place.</h5>
+<h5><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Add below code to appjs/<?php echo $foldername; ?>/app.js</h5>
 <pre class="line-numbers language-javascript"><code><?php echo $model_code; ?></code></pre>

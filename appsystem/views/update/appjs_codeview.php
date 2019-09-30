@@ -18,7 +18,7 @@ $(document).ready(function() {
 function update(){
     Swal.fire({
         title: \'Confirmation\',
-        text: \'ท่านต้องการแก้ไขข้อมูล ใช่ หรือ ไม่ ?\',
+        text: \'Are you sure you want to change?\',
         type: \'warning\',
         showCancelButton: true,
         confirmButtonColor: \'#3085d6\',
@@ -54,5 +54,7 @@ function update(){
 }
 ');
 ?>
-<h5>Copy below code to appjs/<?php echo $folder_name; ?>/app.js</h5>
+<h5>
+    <i class="fa fa-dot-circle-o" aria-hidden="true"></i> Add below code to to appjs/<?php echo $folder_name; ?>/app.js
+</h5>
 <pre class="line-numbers language-javascript"><code><?php echo $model_code; ?></code></pre>
