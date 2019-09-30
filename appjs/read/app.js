@@ -57,6 +57,10 @@ function generate() {
     show_preload();
     $('#div_code_view').html('');
     var form = $('input[name="input_form[]"]:checked');
+    var search_list =  $('input[name="search_by[]"]:checked').map(function(){
+        return $(this).val();
+      }).get();
+
     var input_list = [];
     $.each(form, function(index, el) {
         var column_name = $(el).data('column-name');
@@ -71,12 +75,11 @@ function generate() {
 
     var param = {
         db_table: $('#db_table').val(),
-        cond:$('#cond').val(),
         limit_list:$('#limit_list').val(),
         developer_name:$('#developer_name').val(),
-        input_list:input_list
+        input_list:input_list,
+        search_list:search_list
     };
-    console.log(param);
     // return false;
     var url = site_url+'read/generate';
     $('#div_code_view').load(url, param, function(data){

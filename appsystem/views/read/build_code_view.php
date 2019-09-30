@@ -1,13 +1,9 @@
 <div class="col-md-12">
   <h5><span class="badge badge-pill badge-success">2</span> Build form view :</h5>
 </div>
-<fieldset class="form-group col-md-6">
-    <label for="cond">Condition :</label>
-    <input type="text" class="form-control" id="cond" placeholder="Ex. id = 2 AND name LIKE '%abcd%'">
-</fieldset>
 <fieldset class="form-group col-md-2">
     <label for="limit_list">Limit list :</label>
-    <input type="number" class="form-control" id="limit_list" placeholder="Ex. 50">
+    <input type="number" class="form-control" id="limit_list" placeholder="Ex. 50" value="50">
 </fieldset>
 <fieldset class="form-group col-md-3">
     <label for="developer_name">Developer name :</label>
@@ -21,7 +17,7 @@
             <tr class="bg-info">
                 <th width="30">#</th>
                 <th class="text-center" width="50">Select</th>
-                <th class="text-center" width="100">Search by</th>
+                <th class="text-center" width="100">Search</th>
                 <th class="text-center" width="200">Label</th>
                 <th class="text-center" width="200">Column name</th>
                 <th class="text-center" width="350">Data type</th>
@@ -43,8 +39,8 @@
                             data-data-type="<?php echo $column->data_type; ?>" checked/>
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" name="search_by_<?php echo $column->column_name; ?>"
-                            id="search_by_<?php echo $column->column_name; ?>"/>
+                        <input type="checkbox" name="search_by[]"
+                            id="search_by_<?php echo $column->column_name; ?>" value="<?php echo $column->column_name; ?>"/>
                     </td>
                     <td>
                          <fieldset class="form-group">

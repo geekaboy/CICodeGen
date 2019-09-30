@@ -63,30 +63,30 @@ foreach ($input_list as $key => $input) {
 
 }
 $controller_code = 'public function del()
-    {
-        $post = $this->input->post(NULL, TRUE);
-        $sql = "SELECT * FROM '.$db_table.'
-                WHERE '.$condition_code.'";
-        $rdata= $this->db->query($sql);
-        if ($rdata->num_rows() > 0) {
-            $cond = array(
-                '.$condition_arr_code.'
-            );
+{
+    $post = $this->input->post(NULL, TRUE);
+    $sql = "SELECT * FROM '.$db_table.'
+            WHERE '.$condition_code.'";
+    $rdata= $this->db->query($sql);
+    if ($rdata->num_rows() > 0) {
+        $cond = array(
+            '.$condition_arr_code.'
+        );
 
-            if ($this->db->delete(\''.$db_table.'\', $cond)) {
-                echo json_encode(array(
-                    \'is_successful\' => TRUE,
-                    \'message\' => \'Successfuly\'
-                ));
-            }
-        } else {
+        if ($this->db->delete(\''.$db_table.'\', $cond)) {
             echo json_encode(array(
-                \'is_successful\' => FALSE,
-                \'message\' => \'Data not found.\'
+                \'is_successful\' => TRUE,
+                \'message\' => \'Successfuly\'
             ));
-            exit();
         }
+    } else {
+        echo json_encode(array(
+            \'is_successful\' => FALSE,
+            \'message\' => \'Data not found.\'
+        ));
+        exit();
     }
+}
 ';
 ?>
 <h5>

@@ -32,7 +32,7 @@
                         <input type="checkbox" name="input_form[]"
                             data-column-name="<?php echo $column->column_name; ?>"
                             data-column-default="<?php echo $column->column_default; ?>"
-                            data-data-type="<?php echo $column->data_type; ?>" checked/>
+                            data-data-type="<?php echo $column->data_type; ?>"/>
                     </td>
                     <td>
                          <fieldset class="form-group">

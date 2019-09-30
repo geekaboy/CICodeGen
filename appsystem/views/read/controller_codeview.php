@@ -42,10 +42,11 @@ foreach ($input_list as $key => $input) {
     }
 
 }
-$where_code = '';
-if($cond != ''){
-    $where_code = '
-        WHERE '.$cond;
+
+$search_code = '';
+foreach ($search_list as $key => $sinput) {
+    $search_code.= '
+    $where .= ($get[\''.$sinput.'\'] != \'\')?" AND '.$sinput.' = {$this->db->escape($get[\''.$sinput.'\'])}":"";';
 }
 
 $controller_code = 'public function list_view()
@@ -65,12 +66,11 @@ public function get_list()
 {
     $get = $this->input->get(NULL, TRUE);
 
-    $where = "";
-    if ($get[\'search_text\'] != "") {
-        $where .= "";
-    }
+    $where = "WHERE 1=1 ";
+    '.$search_code.'
     $sql = "SELECT COUNT(*) AS total_row
-        FROM '.$db_table.$where_code.'";
+        FROM '.$db_table.'
+        {$where}";
 
     $q = $this->db->query($sql)->row();
     $total_row = $q->total_row;
@@ -79,7 +79,7 @@ public function get_list()
     $this->load->helper(\'pagination\');
     $config[\'base_url\'] = site_url(\''.$controller_name.'/get_list\');
     $config[\'total_row\'] = $total_row;
-    $config[\'per_page\'] = 100;
+    $config[\'per_page\'] = '.$limit.';
     gen_pagination($config);
 
     $limit = $config[\'per_page\'];
@@ -87,7 +87,8 @@ public function get_list()
     $data[\'start\'] = $start;
 
     $sql = "SELECT '.$select_column.'
-        FROM '.$db_table.$where_code.'
+        FROM '.$db_table.'
+        {$where}
         LIMIT $limit OFFSET $start";
 
     $data[\''.$ex[1].'_list\'] = $this->db->query($sql)->result();

@@ -4,19 +4,27 @@ $classname = ucfirst($ex[1]);
 $controller_name = $ex[1];
 $table_name= $ex[1];
 $folder_name  = $ex[1];
-$html = '<main role="main" class="container">
+
+$search_input = '';
+foreach ($search_list as $key => $input) {
+    $search_input.='
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">'.$input.'</span>
+                            </div>
+                            <input type="text" class="form-control" id="'.$input.'">
+                        </div>
+                    </div>';
+        }
+$html = '<main role="main" class="container-fluid">
     <div class="row mt-3">
         <div class="col-md-12">
             <div class="card card-body">
                 <h4 class="card-title text-center">
-                    <i class="fa fa-database"></i> xxxxx
+                    <i class="fa fa-list"></i> '.$classname.' list
                 </h4>
-                <div class="row justify-content-center mt-5">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <input class="form-control" name="search_text" id="search_text"  placeholder="Keyword"/>
-                        </div>
-                    </div>
+                <div class="row justify-content-center mt-5">'.$search_input.'
                     <div class="col-md-3">
                         <div class="form-group">
                             <button class="btn btn-primary" type="button" id="btn_search">
@@ -62,6 +70,11 @@ foreach ($input_list as $key => $input) {
     $table_td_code.='
                     <td><?php echo $'.$table_name.'->'.$input['column_name'].'; ?></td>';
 }
+$search_var = '';
+foreach ($search_list as $key => $sinput) {
+    $search_var.='
+                '.$sinput.':'.'$(\'#'.$sinput.'\').val(),';
+}
 $table_view_code = '<div class="row justify-content-center mt-5">
     <?php echo $this->pagination->create_links(); ?>
 </div>
@@ -70,6 +83,7 @@ $table_view_code = '<div class="row justify-content-center mt-5">
         <thead>
             <tr class="bg-info">
                 <th width="20">#</th>'.$table_th_code.'
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -108,15 +122,12 @@ $table_view_code = '<div class="row justify-content-center mt-5">
 
 <script>
     $(document).ready(function() {
-        $(\'.page-link > a\').click(function(e) {
+        $(\'.page-link > a\').click(function (e) {
             e.preventDefault();
-            var url = site_url + "'.$table_name.'/get_list?" +
-                \'page=\' + $(this).data(\'ci-pagination-page\') +
-                \'&search_text=\' + $(\'#search_text\').val();
-            $(\'#div_table\').load(url, function(response, status, request) {
+            var url = $(this).attr(\'href\');
+            $(\'#div_table\').load(url, function (response, status, request) {
                 $(\'body\').scrollTop(0);
             });
-
         });
     }); //end ready
 </script>
@@ -128,3 +139,4 @@ $table_view_code = '<div class="row justify-content-center mt-5">
     in folder views/<?php echo $folder_name;?> and copy below code to <span class="text-info">table_view.php</span>
 </h5>
 <pre class="line-numbers language-html" ><code><?php echo htmlspecialchars($table_view_code); ?></code></pre>
+
