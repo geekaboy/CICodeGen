@@ -1,13 +1,24 @@
+<?php $sess = $this->session->userdata(); ?>
 <div class="col-md-12">
   <h5><span class="badge badge-pill badge-success">2</span> Build form view :</h5>
 </div>
 <fieldset class="form-group col-md-4">
     <label for="form_name">Form name :</label>
-    <input type="text" class="form-control" id="form_name" placeholder="Ex. SS2SEK">
+    <input type="text" class="form-control" id="form_name" placeholder="Ex. frm_add" value="frm_add">
 </fieldset>
 <fieldset class="form-group col-md-4">
+
     <label for="developer_name">Developer name :</label>
-    <input type="text" class="form-control" id="developer_name" placeholder="Ex. SS2SEK">
+    <div class="input-group">
+        <input type="text" class="form-control" id="developer_name" placeholder="Ex. SS2SEK" value="">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="btn-dev-name" onclick="save_devname()">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+
 </fieldset>
 
 <div class="col-md-12">

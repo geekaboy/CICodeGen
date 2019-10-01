@@ -23,7 +23,7 @@ class Deletegen extends CI_Controller {
         $data['plugin'] = array(
             'assets/plugins/prismjs/prism.css',
             'assets/plugins/prismjs/prism.js',
-            'assets/plugins/jquery.serializeJSON/jquery.serializejson.min.js',
+            'assets/plugins/jquery.serializeJSON/jquery.serializejson.min.js'
         );
         $data['appjs'] = array(
             'appjs/deletegen/app.js'
