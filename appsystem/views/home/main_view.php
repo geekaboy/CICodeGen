@@ -24,7 +24,7 @@
                             </div>
                             <br>
                             <div class="text-center">
-                                <h4><u>Dev. on tech stack:</u> </h4>
+                                <h4><u>Dev. on:</u> </h4>
                                 Database => PostgreSQL 10.10, MySQL 5.7.26 <br>
                                 OS => Ubuntu 18.04.1 LTS<br>
                                 HTTP Server => Apache2.2.34 <br>

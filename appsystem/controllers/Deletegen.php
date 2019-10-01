@@ -1,5 +1,5 @@
 <?php
-//------------[Controller File name : Create.php ]----------------------//
+//------------[Controller File name : Deletegen.php ]----------------------//
 if (!defined('BASEPATH'))  exit('No direct script access allowed');
 
 class Deletegen extends CI_Controller {

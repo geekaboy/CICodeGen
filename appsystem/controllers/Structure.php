@@ -1,5 +1,5 @@
 <?php
-//------------[Controller File name : Create.php ]----------------------//
+//------------[Controller File name : Structure.php ]----------------------//
 if (!defined('BASEPATH'))  exit('No direct script access allowed');
 
 class Structure extends CI_Controller {

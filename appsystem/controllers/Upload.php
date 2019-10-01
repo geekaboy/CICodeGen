@@ -1,16 +1,14 @@
 <?php
-//------------[Controller File name : Home.php ]----------------------//
+//------------[Controller File name : Upload.php ]----------------------//
 if (!defined('BASEPATH'))  exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Upload extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
 
 
     }
-
-    private  $limit = 30;
 
     public function index(){
         $this->main_view();
@@ -23,8 +21,8 @@ class Home extends CI_Controller {
 
         //@VIEW
         $this->load->view('theme/header', $data);
-        $this->load->view('home/main_view');
+        $this->load->view('upload/main_view');
         $this->load->view('theme/footer');
     }
 
-}//end class
+}//END CLASS

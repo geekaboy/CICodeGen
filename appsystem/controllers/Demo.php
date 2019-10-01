@@ -1,5 +1,5 @@
 <?php
-//------------[Controller File name : Web_link.php ]----------------------//
+//------------[Controller File name : Demo.php ]----------------------//
 if (!defined('BASEPATH'))  exit('No direct script access allowed');
 
 class Demo extends CI_Controller {

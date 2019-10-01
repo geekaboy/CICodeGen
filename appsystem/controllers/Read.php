@@ -1,5 +1,5 @@
 <?php
-//------------[Controller File name : Web_link.php ]----------------------//
+//------------[Controller File name : Read.php ]----------------------//
 if (!defined('BASEPATH'))  exit('No direct script access allowed');
 
 class Read extends CI_Controller {

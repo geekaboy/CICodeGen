@@ -51,6 +51,16 @@ $sess = $this->session->userdata();
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('upload'); ?>">
+                        <i class="fa fa-upload"></i> อัพโหลด (Upload)
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('logingen'); ?>">
+                        <i class="fa fa-sign-in"></i> Login generate
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

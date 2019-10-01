@@ -1,5 +1,5 @@
 <?php
-//------------[Controller File name : Create.php ]----------------------//
+//------------[Controller File name : Update.php ]----------------------//
 if (!defined('BASEPATH'))  exit('No direct script access allowed');
 
 class Update extends CI_Controller {
