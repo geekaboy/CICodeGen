@@ -34,11 +34,31 @@ $header_html = '<html lang="en">
     <div class="col-md-4">
         <strong><i class="fa fa-cubes" aria-hidden="true"></i> Plugins list</strong>
         <ol>
-            <li>Bootstrap v.4.3.1</li>
-            <li>FontAwesome 4.7</li>
-            <li>JQuery 3.3.1 slim</li>
-            <li>SerializeJSON 2.9.0</li>
-            <li>SweetAlert2 8.17.6</li>
+            <li>
+                <a href="https://www.jsdelivr.com/package/npm/bootstrap?version=4.3.0" target="_blank">
+                Bootstrap v.4.3.1
+                </a>
+            </li>
+            <li>
+                <a href="https://fontawesome.com/v4.7.0/" target="_blank">
+                FontAwesome 4.7
+                </a>
+            </li>
+            <li>
+                <a href="https://www.jsdelivr.com/package/npm/jquery?version=3.3.1" target="_blank">
+                JQuery 3.3.1
+                </a>
+            </li>
+            <li>
+                <a href="https://www.jsdelivr.com/package/npm/jquery-serializejson?version=2.9.0" target="_blank">
+                SerializeJSON 2.9.0
+                </a>
+            </li>
+            <li>
+                <a href="https://www.jsdelivr.com/package/npm/sweetalert2?version=8.17.6" target="_blank">
+                SweetAlert2 8.17.6
+                </a>
+            </li>
         </ol>
     </div>
 </div>
