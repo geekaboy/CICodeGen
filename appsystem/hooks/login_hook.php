@@ -9,46 +9,22 @@ class Login_hook{
 	}
 
 	public function check_login(){
-		// echo "<pre>";
-		// // print_r($this->ci->router);
-		// echo $this->ci->router->module;
-		// exit();
 		$sess = $this->ci->session->userdata();
-		if($this->ci->router->module == 'backend'){
-			$arrClass = array('dashboard', 'web_contents');
-			$bos_sess = $this->ci->session->userdata('backend');
-			if($bos_sess['is_login'] == null){
+		$arrClass = array('home', 'create', 'configsystem', 'deltetegen', 'getdatabase',
+					'logingen', 'read', 'structure', 'update', 'upload', 'welcome');
+		if(empty($sess['is_login']) || $sess['is_login'] == null){
 
-				if(in_array($this->ci->router->class, $arrClass)){
-					redirect('backend/login', 'refresh');
-					exit();
-				}//end if
-
-			}else{
-				if($this->ci->router->method == 'login_view'){
-					redirect('backend/dashboard', 'refresh');
-					exit();
-				}
+			if(in_array($this->ci->router->class, $arrClass)){
+				redirect('login', 'refresh');
+				exit();
 			}
 
-		}else if($this->ci->router->module == 'website'){
-			$arrClass = array('main', 'person_info', 'register', 'account');
-			if($this->ci->session->userdata('is_login') == null){
-
-				if(in_array($this->ci->router->class, $arrClass)){
-					redirect('website/login', 'refresh');
-					exit();
-				}//end if
-
-			}else{
-				if($this->ci->router->method == 'login_view'){
-					redirect('website/main', 'refresh');
-					exit();
-				}
-
+		}else{
+			if($this->ci->router->method == 'login_view'){
+				redirect('home', 'refresh');
+				exit();
 			}
 		}
-
 
 
 	}//End function

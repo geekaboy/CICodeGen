@@ -21,7 +21,7 @@ class Logingen extends CI_Controller {
 
         //@VIEW
         $this->load->view('theme/header', $data);
-        $this->load->view('upload/main_view');
+        $this->load->view('logingen/main_view');
         $this->load->view('theme/footer');
     }
 
