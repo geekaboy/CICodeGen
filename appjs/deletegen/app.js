@@ -47,6 +47,7 @@ function get_build_form_view(){
         $('html, body').animate({
             scrollTop: $('#div_build_form').offset().top - 60
         }, 500, 'linear');
+        get_devname();
         hide_preload();
     });
 
@@ -56,7 +57,7 @@ function generate() {
     show_preload();
     $('#div_code_view').html('');
     var form = $('input[name="input_form[]"]:checked');
-    
+
     if(form.length == 0) {
         hide_preload();
         Swal.fire(
@@ -66,7 +67,7 @@ function generate() {
         );
         return false;
     }
-    
+
     var input_list = [];
     $.each(form, function(index, el) {
         var column_name = $(el).data('column-name');

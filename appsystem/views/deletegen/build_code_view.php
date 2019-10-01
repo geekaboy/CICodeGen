@@ -3,7 +3,14 @@
 </div>
 <fieldset class="form-group col-md-3">
     <label for="developer_name">Developer name :</label>
-    <input type="text" class="form-control" id="developer_name" placeholder="Ex. SS2SEK">
+    <div class="input-group">
+        <input type="text" class="form-control" id="developer_name" placeholder="Ex. SS2SEK" value="">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="btn-dev-name" onclick="save_devname()">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+    </div>
 </fieldset>
 
 <div class="col-md-12">
@@ -35,10 +42,10 @@
                             data-data-type="<?php echo $column->data_type; ?>"/>
                     </td>
                     <td>
-                         <fieldset class="form-group">
-                            <input type="text" class="form-control" id="input_label_<?php echo $column->column_name; ?>"
-                                value="<?php echo $column->column_name; ?>">
-                         </fieldset>
+                            <fieldset class="form-group">
+                                <input type="text" class="form-control" id="input_label_<?php echo $column->column_name; ?>"
+                                    value="<?php echo $column->column_name; ?>">
+                            </fieldset>
                     </td>
                     <td><?php echo $column->column_name; ?></td>
                     <td><?php echo $column->data_type ?></td>

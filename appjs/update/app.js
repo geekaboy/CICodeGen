@@ -52,6 +52,7 @@ function get_build_form_view(){
         }, 500, 'linear');
         $('.input-type').change(input_type_change);
         $('.btn-add-option').click(addNewOption);
+        get_devname();
         hide_preload();
     });
 

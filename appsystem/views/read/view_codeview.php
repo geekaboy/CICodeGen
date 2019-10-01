@@ -6,6 +6,7 @@ $table_name= $ex[1];
 $folder_name  = $ex[1];
 
 $search_input = '';
+$search_html = '';
 if(!empty($search_list)){
     foreach ($search_list as $key => $input) {
         $search_input.='
@@ -29,6 +30,9 @@ if(!empty($search_list)){
                             </button>
                         </div>
                     </div>';
+    $search_html='
+                <div class="row justify-content-center mt-5">'.$search_input.'
+                </div>';
 }
 
 $html = '<main role="main" class="container-fluid">
@@ -37,10 +41,7 @@ $html = '<main role="main" class="container-fluid">
             <div class="card card-body">
                 <h4 class="card-title text-center">
                     <i class="fa fa-list"></i> '.$classname.' list
-                </h4>
-                <div class="row justify-content-center mt-5">'.$search_input.'
-                    
-                </div>
+                </h4>'.$search_html.'
 
                 <div class="row">
                     <div class="col-md-12" id="div_table">
@@ -140,4 +141,3 @@ $table_view_code = '<div class="row justify-content-center mt-5">
     in folder views/<?php echo $folder_name;?> and copy below code to <span class="text-info">table_view.php</span>
 </h5>
 <pre class="line-numbers language-html" ><code><?php echo htmlspecialchars($table_view_code); ?></code></pre>
-

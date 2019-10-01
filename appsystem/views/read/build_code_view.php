@@ -7,7 +7,14 @@
 </fieldset>
 <fieldset class="form-group col-md-3">
     <label for="developer_name">Developer name :</label>
-    <input type="text" class="form-control" id="developer_name" placeholder="Ex. SS2SEK">
+    <div class="input-group">
+        <input type="text" class="form-control" id="developer_name" placeholder="Ex. SS2SEK" value="">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="btn-dev-name" onclick="save_devname()">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+    </div>
 </fieldset>
 
 <div class="col-md-12">

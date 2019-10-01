@@ -29,8 +29,13 @@
     <script src="<?php echo base_url(); ?>assets/theme/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/theme/vendors/@coreui/coreui/js/coreui.min.js"></script>
 
+    <!--sweetalert -->
     <script src="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert_all.js"></script>
 
+    <!--pnotify-->
+    <link rel="stylesheet" href="<?php echo base_url('assets/plugins/PNotify/PNotifyBrightTheme.css'); ?>">
+    <script src="<?php echo base_url(); ?>assets/plugins/PNotify/PNotify.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/PNotify/PNotifyButtons.js"></script>
 
     <script src="<?php echo base_url(); ?>appjs/global.js"></script>
 

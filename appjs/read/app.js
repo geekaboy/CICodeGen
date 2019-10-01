@@ -48,6 +48,7 @@ function get_build_form_view(){
         $('html, body').animate({
             scrollTop: $('#div_build_form').offset().top - 60
         }, 500, 'linear');
+        get_devname();
         hide_preload();
     });
 
