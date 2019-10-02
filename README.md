@@ -17,4 +17,5 @@ Framework => codeigniter 3
 #### Buy me a coffee :)
 ![enter image description here](https://gitlab.com/geekaboy/cicodegen/raw/master/assets/images/promptpay_small.png)
 
-![https://paypal.me/ss2sek](https://gitlab.com/geekaboy/cicodegen/raw/master/assets/images/paypal-me-small.png)
+![enter image description here](https://gitlab.com/geekaboy/cicodegen/raw/master/assets/images/paypal-me-small.png)
+https://paypal.me/ss2sek
