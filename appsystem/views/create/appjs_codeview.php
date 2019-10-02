@@ -10,22 +10,38 @@ $model_code = htmlspecialchars(
 });//END Ready
 
 function save(){
+    show_preload();
     $(\'.btn-save\').attr("disabled", true);
     var url = site_url+"'.$controller_name.'/save";
     var param = $(\'form[name="'.$form_name.'"]\').serializeJSON();
     $.post(url, param, function(resp, textStatus, xhr) {
         if(resp.is_success){
-            alert(resp.msg);
-            setTimeout(function () {
+            hide_preload();
+            Swal.fire({
+                title: \'Success\',
+                html: resp.msg,
+                type: \'success\',
+            }).then(function(){
                 window.location.reload();
-            }, 2000);
+            });
+
         }else{
             $(\'.btn-save\').attr("disabled", false);
-            alert(resp.msg);
+            hide_preload();
+            Swal.fire({
+                title: \'Warning\',
+                html: resp.msg,
+                type: \'warning\',
+            });
         }
     },\'json\').fail(function(){
+        hide_preload();
         $(\'.btn-save\').attr("disabled", false);
-        alert(\'Fail\');
+        Swal.fire({
+            title: \'Error\',
+            html: \'Something want wrong, Please try again leter.\',
+            type: \'warning\',
+        });
 
     });
 }

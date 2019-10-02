@@ -26,7 +26,7 @@
                                 License => GPL 3
                             </div>
                             <div class="text-center mt-3">
-                                <h4><u><i class="fa fa-code" aria-hidden="true"></i> Dev. on:</u> </h4>
+                                <h4><u><i class="fa fa-code" aria-hidden="true"></i> Dev. on</u> </h4>
                                 Database => PostgreSQL 10.10, MySQL 5.7.26 <br>
                                 OS => Ubuntu 18.04.1 LTS<br>
                                 HTTP Server => Apache2.2.34 <br>

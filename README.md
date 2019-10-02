@@ -5,9 +5,8 @@
 Version => 0.1 Bata  
 Repo =>  [https://gitlab.com/geekaboy/cicodegen](https://gitlab.com/geekaboy/cicodegen)  
 Developer => SS2SEK  
-Contact => suchartsek.p@gmail.com  
-Update lastest => 2019-10-02  
-License => GPL 3
+Contact => suchartsek.p@gmail.com
+
 #### Dev. on:
 Database => PostgreSQL 10.10, MySQL 5.7.26  
 OS => Ubuntu 18.04.1 LTS  

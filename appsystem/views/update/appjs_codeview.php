@@ -10,11 +10,6 @@ foreach ($input_list as $key => $input) {
 }
 $model_code = htmlspecialchars(
 '//Create by: @'.$developer_name.' At '.date('Y-m-d').'
-$(document).ready(function() {
-
-
-});//END Ready
-
 function update(){
     Swal.fire({
         title: \'Confirmation\',
@@ -23,7 +18,7 @@ function update(){
         showCancelButton: true,
         confirmButtonColor: \'#3085d6\',
         cancelButtonColor: \'#d33\',
-        confirmButtonText: \'Yes่\',
+        confirmButtonText: \'Yes\',
         cancelButtonText: \'No\'
     }).then(function(result){
         if (result.value) {
@@ -37,7 +32,7 @@ function update(){
                     hide_preload();
                     Swal.fire({
                         title: \'Warning\',
-                        text: resp.msg,
+                        html: resp.msg,
                         type: \'warning\',
                     });
                 }

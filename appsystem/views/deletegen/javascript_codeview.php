@@ -23,19 +23,44 @@ foreach ($input_list as $key => $input) {
         '.$input['column_name'].' : $(el).data(\''.$input['column_name'].'\'),';
 
 }
-$javascript_codeview = 'function delete(el) {
-
-    var url = site_url + "'.$controller_name.'/del";
-    var param = {'.$condition_arr_code.'
-    };
-    $.post(url, param, function (resp, textStatus, xhr) {
-        if (resp.is_success) {
-            alert("Deleted");
-        }else{
-            alert("Fail");
-
+$javascript_codeview = 'function del(el) {
+    Swal.fire({
+        title: \'Confirmation\',
+        text: \'Are you sure you want to delete?\',
+        type: \'warning\',
+        showCancelButton: true,
+        confirmButtonColor: \'#3085d6\',
+        cancelButtonColor: \'#d33\',
+        confirmButtonText: \'Yes\',
+        cancelButtonText: \'No\'
+    }).then(function(result){
+        if (result.value) {
+            var url = site_url + "'.$controller_name.'/del";
+            var param = {'.$condition_arr_code.'
+            };
+            show_preload();
+            $.post(url, param, function (resp, textStatus, xhr) {
+                if (resp.is_success) {
+                    window.location.reload();
+                }else{
+                    hide_preload();
+                    Swal.fire({
+                        title: \'Warning\',
+                        html: resp.msg,
+                        type: \'warning\',
+                    });
+                }
+            }, \'json\').fail(function(){
+                hide_preload();
+                Swal.fire({
+                    title: \'Error\',
+                    html: \'Something want wrong, Please try again leter.\',
+                    type: \'warning\',
+                });
+            });
         }
-    }, \'json\');
+    });//END Swal
+
 }
 ';
 

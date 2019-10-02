@@ -17,10 +17,14 @@ foreach ($input_list as $key => $input) {
 }
 
 $search_var = '';
+$search_clear = '';
 if (!empty($search_list)) {
     foreach ($search_list as $key => $sinput) {
         $search_var.='
             '.$sinput.':'.'$(\'#'.$sinput.'\').val(),';
+
+        $search_clear .='
+    $(\'#'.$sinput.'\').val(\'\');';
     }
 }
 
@@ -28,53 +32,64 @@ $javascript_codeview = '$(document).ready(function () {
 
     get_list();
 
-    $(\'#btn_search\').click(get_list);
-    $(\'#btn_clear\').click(clear_search);
-    $(\'#search_text\').change(function (e) {
-        e.preventDefault();
-        if($(this).val() == \'\'){
-            get_list();
-        }
-
-    });
-
 });//End ready
 
 function get_list(){
+    show_preload();
     $(\'#dev_table\').html(\'\');
     var param = {'.$search_var.'
         };
     var url = site_url+"'.$table_name.'/get_list?"+$.param(param);
     $(\'#div_table\').load(url, function (response, status, request) {
         console.log(\'status=>\', status);
+        hide_preload();
     });
 
 }
 
-function clear_search(){
+function clear_search(){'.$search_clear.'
     get_list();
 }
 
 function del(el) {
-    var cf = confirm("Are you sure you want to delete?");
-    if(!cf){
-        return false;
-    }
-    var url = site_url + "'.$controller_name.'/del";
-    var param = {
-        id: $(el).data(\'id\')
-    };
-
-    $.post(url, param, function (resp, textStatus, xhr) {
-        if (resp.is_success) {
-            alert(resp.msg);
-            window.location.reload();
-        }else{
-            alert(resp.msg);
+    Swal.fire({
+        title: \'Confirmation\',
+        text: \'Are you sure you want to delete?\',
+        type: \'warning\',
+        showCancelButton: true,
+        confirmButtonColor: \'#3085d6\',
+        cancelButtonColor: \'#d33\',
+        confirmButtonText: \'Yes\',
+        cancelButtonText: \'No\'
+    }).then(function(result){
+        if (result.value) {
+            var url = site_url + "'.$controller_name.'/del";
+            var param = {
+                id: $(el).data(\'id\')
+            };
+            show_preload();
+            $.post(url, param, function (resp, textStatus, xhr) {
+                if (resp.is_success) {
+                    window.location.reload();
+                }else{
+                    hide_preload();
+                    Swal.fire({
+                        title: \'Warning\',
+                        html: resp.msg,
+                        type: \'warning\',
+                    });
+                }
+            }, \'json\').fail(function(){
+                hide_preload();
+                Swal.fire({
+                    title: \'Error\',
+                    html: \'Something want wrong, Please try again leter.\',
+                    type: \'warning\',
+                });
+            });
         }
-    }, \'json\').fail(function(){
-        alert("Fail");
-    });
+    });//END Swal
+
 }
 ';
 

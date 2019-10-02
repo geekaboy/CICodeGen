@@ -27,9 +27,28 @@ class '.$classname.' extends CI_Controller {
 <?php
 
 $dataUpdateCode = '';
+$validListCode = '';
+$validmessageCode ='    ';
 foreach ($input_list as $key => $input) {
-    $dataUpdateCode .= '\''.$input['column_name'].'\''.'=>'.'$post[\''.$input['column_name'].'\'],
-        ';
+        switch ($input['input_type']) {
+            case 'checkbox':
+        $dataUpdateCode .= '
+            \''.$input['column_name'].'\''.'=>'.'$post[\''.$input['column_name'].'[]\'],';
+        $validListCode .= '
+    $frm->set_rules('.'\''.$input['column_name'].'[]\', \''.$input['label'].'\' '.', \'trim|required\');';
+        $validmessageCode .='
+        $message .= form_error(\''.$input['column_name'].'[]\');';
+            break;
+
+            default:
+        $dataUpdateCode .= '
+            \''.$input['column_name'].'\''.'=>'.'$post[\''.$input['column_name'].'\'],';
+        $validListCode .= '
+    $frm->set_rules('.'\''.$input['column_name'].'\', \''.$input['label'].'\' '.', \'trim|required\');';
+        $validmessageCode .='
+        $message .= form_error(\''.$input['column_name'].'\');';
+            break;
+        }
 }
 
 
@@ -58,24 +77,38 @@ public function edit_view()
 //Create by: @'.$developer_name.' At '.date('Y-m-d').'
 public function update(){
 	$post = $this->input->post(NULL, TRUE);
+    $this->load->library(\'form_validation\');
 
-	$data = array(
-        '.$dataUpdateCode.'
-	);
+    //Validation form
+    $frm = $this->form_validation;'.$validListCode.'
+    $frm->set_message(\'required\', \'Please input %s\');
 
-	$condition = array(
-		\'id\'=>$post[\'id\']
-	);
+    if (!$frm->run()) {
+        $message  = "";'.$validmessageCode.'
+        echo json_encode( array(
+                \'is_success\' => FALSE,
+                \'msg\' => $message
+        ));
+        exit();
+    }else{
+        $data = array('.$dataUpdateCode.'
+    	);
 
-	$is_success = $this->db->update(\''.$db_table.'\', $data, $condition);
+    	$condition = array(
+    		\'id\'=>$post[\'id\']
+    	);
 
-    $msg = ($is_success)?\'Successfuly\':\'Somthing wrong, Please try again leter.\';
-    echo json_encode(
-        array(
-            \'is_success\'=>$is_success,
-            \'msg\'=>$msg
-        )
-    );
+    	$is_success = $this->db->update(\''.$db_table.'\', $data, $condition);
+
+        $msg = ($is_success)?\'Successfuly\':\'Somthing wrong, Please try again leter.\';
+        echo json_encode(
+            array(
+                \'is_success\'=>$is_success,
+                \'msg\'=>$msg
+            )
+        );
+    }
+
 
 }//end function
 ');

@@ -22,10 +22,10 @@ if(!empty($search_list)){
     $search_input.='
                     <div class="col-md-3">
                         <div class="form-group">
-                            <button class="btn btn-primary" type="button" id="btn_search">
+                            <button class="btn btn-primary" type="button" id="btn_search" onclick="get_list()">
                                 Search
                             </button>
-                            <button class="btn btn-warning" type="button" id="btn_clear">
+                            <button class="btn btn-warning" type="button" id="btn_clear" onclick="clear_search()">
                                 Clear
                             </button>
                         </div>
